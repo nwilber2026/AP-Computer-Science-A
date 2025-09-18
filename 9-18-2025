@@ -1,0 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.stringassignment;
+
+/**
+ *
+ * @author NWilber2026
+ */
+public class StringAssignment {
+
+    public static void main(String[] args) {
+        
+        //making a string
+        String strNW = new String("Nathan Wilber");      
+        System.out.println("\nMy name is \"" + (strNW) + "\"");
+        
+        //get length of my name
+        System.out.println("\nMy name length is " + strNW.length());
+        
+
+        //type my name in all upper case
+        System.out.println("\nMy name in upper case is \"" + (strNW).toUpperCase() + "\"");
+        
+        //type my name in all lower case
+        System.out.println("\nMy name in lower case is \"" + (strNW).toLowerCase() + "\"");
+        
+        //get first letter of my name
+        System.out.println("\nThe first letter of my name is \"" + (strNW).charAt(0) + "\"");
+        
+        //get last letter of my name
+        System.out.println("\nThe last letter of my name is \"" + (strNW).charAt(12) + "\"");
+        
+        //get the location of the space in my name
+        System.out.println("\nThe index of the space between the names is " + (strNW).indexOf(" "));
+    }
+}
