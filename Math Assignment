@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.mathassignment;
+
+import java.util.Random;
+import java.util.Scanner;
+/**
+ *
+ * @author NWilber2026
+ */
+public class MathAssignment {
+
+    public static void main(String[] args) {
+        
+    //Problem 1: Number + its sin, cos, and tan:
+        //Declare generator
+        Random generator = new Random();
+        //Generate random number btwn 0-90
+        int num1;
+        num1 = generator.nextInt(91);
+        //Generate math functions
+        double sin1 = roundAvoid(Math.sin(num1), 3);
+        double cosine1 = roundAvoid(Math.cos(num1), 3);
+        double tangent1 = roundAvoid(Math.tan(num1), 3);
+             
+        //Print all
+        System.out.println("Number: " + num1 + " Sine: " + sin1 + " Cosine: " + cosine1 + " Tangent: " + tangent1);    
+
+        
+        
+    //Problem 2: Radius of Circle + Area + Volume(sphere)        
+        //Generate random number btwn 1.0-20.0      
+        int radius = generator.nextInt(19)+1;
+        double roundRadius = roundAvoid(radius, 1);
+        //Find area
+        double circleArea = roundAvoid(Math.PI * Math.pow(roundRadius, 2), 3);
+        //Find and round volume
+        double sphereVolume = (4.0/3.0)* Math.PI * Math.pow(roundRadius, 3);
+        double roundVolume = roundAvoid(sphereVolume, 3);
+        //Print all
+        System.out.println("\nRadius: " + roundRadius + " Area: " + circleArea + " Volume: " + roundVolume);
+    
+        
+        
+    //Problem 3: Number (1000-100,000,000)+ sqr root + natural log + log10
+        //Generate random number btwn 1000.0-100,000,000.0
+        int num2 = generator.nextInt(99999000)+1000;
+        double roundnum2 = roundAvoid(num2, 1);
+        //Find square root
+        double squareRoot = roundAvoid(Math.sqrt(roundnum2), 5);
+        //Find natural log
+        double naturalLog = roundAvoid(Math.log(roundnum2), 5);
+        //Find log10
+        double log10 = roundAvoid(Math.log10(roundnum2), 5);
+        //Print all
+        System.out.println("\nNumber: " + roundnum2 + " Square Root: " + squareRoot + " Natural Log: " + naturalLog + " Log10: " + log10);
+        
+    //Problem 4:    
+        
+    }    
+    public static double roundAvoid(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    }
+}
