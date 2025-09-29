@@ -4,64 +4,135 @@
 
 package com.mycompany.mathassignment;
 
+
+//imports:
 import java.util.Random;
 import java.util.Scanner;
+
 /**
  *
- * @author NWilber2026
+ * @author silve
  */
 public class MathAssignment {
 
     public static void main(String[] args) {
         
-    //Problem 1: Number + its sin, cos, and tan:
+    //Declarations:
         //Declare generator
-        Random generator = new Random();
+        Random generator = new Random();       
+        //Declare Scanner
+        Scanner scan = new Scanner(System.in);
+        
+     //Problem 1:          
+        
+        System.out.println("\nProblem 1:");
+        
         //Generate random number btwn 0-90
-        int num1;
-        num1 = generator.nextInt(91);
+        int num1 = generator.nextInt(91);
+        
         //Generate math functions
         double sin1 = roundAvoid(Math.sin(num1), 3);
         double cosine1 = roundAvoid(Math.cos(num1), 3);
         double tangent1 = roundAvoid(Math.tan(num1), 3);
              
-        //Print all
-        System.out.println("Number: " + num1 + " Sine: " + sin1 + " Cosine: " + cosine1 + " Tangent: " + tangent1);    
+        //Print all        
+        System.out.println("Number: " + num1 + "   Sine: " + sin1 + "   Cosine: " + cosine1 + "   Tangent: " + tangent1);    
 
         
         
-    //Problem 2: Radius of Circle + Area + Volume(sphere)        
+    //Problem 2:
+        
+        System.out.println("\nProblem 2:");
+        
         //Generate random number btwn 1.0-20.0      
         int radius = generator.nextInt(19)+1;
         double roundRadius = roundAvoid(radius, 1);
+        
         //Find area
         double circleArea = roundAvoid(Math.PI * Math.pow(roundRadius, 2), 3);
+        
         //Find and round volume
-        double sphereVolume = (4.0/3.0)* Math.PI * Math.pow(roundRadius, 3);
+        double sphereVolume = (4.0/3.0) * Math.PI * Math.pow(roundRadius, 3);
         double roundVolume = roundAvoid(sphereVolume, 3);
-        //Print all
-        System.out.println("\nRadius: " + roundRadius + " Area: " + circleArea + " Volume: " + roundVolume);
+        
+        //Print all        
+        System.out.println("Radius: " + roundRadius + "   Area: " + circleArea + "   Volume: " + roundVolume);
     
         
         
-    //Problem 3: Number (1000-100,000,000)+ sqr root + natural log + log10
-        //Generate random number btwn 1000.0-100,000,000.0
-        int num2 = generator.nextInt(99999000)+1000;
-        double roundnum2 = roundAvoid(num2, 1);
+    //Problem 3:
+        
+        System.out.println("\nProblem 3:");
+        
+        //Generate random number btwn 1000.0-100,000,000.0                       
+        int num2 = generator.nextInt(99999000)+1000;        
+        
         //Find square root
-        double squareRoot = roundAvoid(Math.sqrt(roundnum2), 5);
+        double squareRoot = roundAvoid(Math.sqrt(num2), 5);
+        
         //Find natural log
-        double naturalLog = roundAvoid(Math.log(roundnum2), 5);
+        double naturalLog = roundAvoid(Math.log(num2), 5);
+        
         //Find log10
-        double log10 = roundAvoid(Math.log10(roundnum2), 5);
-        //Print all
-        System.out.println("\nNumber: " + roundnum2 + " Square Root: " + squareRoot + " Natural Log: " + naturalLog + " Log10: " + log10);
+        double log10 = roundAvoid(Math.log10(num2), 5);
+        
+        //Print all        
+        System.out.println("Number: " + num2 + "   Square Root: " + squareRoot + "   Natural Log: " + naturalLog + "   Log10: " + log10);
+       
+        
         
     //Problem 4:    
         
+        System.out.println("\nProblem 4:");
+                        
+        //Equation: mass =  Energy(the big number)/c^2
+        
+        //Speed of light
+        double c = 299792458.0; //meters per second
+        
+        //energy = "num2" from earlier problem
+        
+        //Ask user for number of decimal places        
+        System.out.println("Number of decimal places to round to: ");
+        int scan1 = scan.nextInt();
+        
+        //Find mass
+        double mass1 = num2 / Math.pow(c,2);
+        double mass2 = roundAvoid(mass1, scan1);
+        
+        //Print all        
+        System.out.println("Energy: " + num2 + "joules");
+        System.out.println("Speed of light (c): " + c + "meters per second");
+        System.out.println("Mass in grams: " + mass2 );
+        
+        
+        
+    //Problem 5: 
+        
+        System.out.println("\nProblem 5:");
+    
+        //Ask user for real number value
+        System.out.println("Input a real number value: ");
+        double scan2 = scan.nextDouble();
+        
+        //Ask user for a n integer
+        System.out.println("Input an integer: ");
+        int scan3 = scan.nextInt();
+                
+        //Ask user for number of decimal places
+        System.out.println("Number of decimal places to round to: ");
+        int scan4 = scan.nextInt();
+        
+        //Combine all values
+        double output1 = Math.pow(scan2, scan3);
+        double output2 = roundAvoid(output1, scan4);
+        
+        //Print all
+        System.out.println("The number is: " + output2);
+    
     }    
     public static double roundAvoid(double value, int places) {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
     }
-}
+}    
