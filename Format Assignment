@@ -1,0 +1,92 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.formatassignment;
+
+//Imports:
+import java.text.NumberFormat;
+import java.util.Scanner;
+import java.util.Locale;
+
+/**
+ *
+ * @author NWilber2026
+ */
+public class FormatAssignment {
+
+    public static void main(String[] args) {
+    
+    //Declarations:
+        //Declare Scanner
+        Scanner scan = new Scanner(System.in);
+        
+    /*Problem 1: Ask for total number of students at a school (any school). Now 
+    ask for the number of girls at that school. Using Number formatting, output 
+    the % of girls and % of boys at that school.*/    
+        
+    System.out.println("\nProblem 1: ");
+                
+        //Ask user for number of students
+        System.out.println("How many students are at the Cathedral Catholic?: ");
+        int students = scan.nextInt();        
+        
+        //Ask user for number of girl students
+        System.out.println("How many of those students are girls?: ");
+        int girls = scan.nextInt();
+        
+        //Find number of boys
+        int boys = students - girls;
+        
+        //Calculate percentage equation
+        double percentGirls = ((double) girls / students);
+        double percentBoys = ((double) boys / students);        
+        
+        //Format percentage
+        NumberFormat percentFmt = NumberFormat.getPercentInstance();
+        
+        //Allow for decimal points in the percentage
+        percentFmt.setMaximumFractionDigits(2);
+        
+        //Print all
+        System.out.println("Total number of students: " + students);        
+        System.out.println("Percentage that are girls: " + percentFmt.format(percentGirls));
+        System.out.println("Percentage that are boys: " +  percentFmt.format(percentBoys));
+    
+    
+        
+    /*Problem 2: Ask for total amout of money in Dollars and Cents. The method must 
+    convert this value to British Pounds (gbp - Exchange rate on 9/26 is 0.75 pence to 1$). 
+    Output the number of Pounds, mentioning the exchange rate, in a British (locale) 
+    number format. Do the same for the Euro (86 eCents to 1$ today)*/    
+        
+    System.out.println("\nProblem 2: ");
+    
+        //Ask user for total amount of USD
+        System.out.println("How much money do you have?: (dollars and cents, $--.--) ");
+        int totalUSD = scan.nextInt();
+        
+        //Print all
+        System.out.println("The exchange rate for US Dollars to British Pounds is $1 to 75 pence.");
+        System.out.println("You have: " + "British Pounds.");
+        System.out.println("The exchange rate for US Dollars to Euros is $1 to 86 eCents.");
+        System.out.println("You have: " + "Euros.");
+       
+    
+    /*Problem 3: Ask for an integer from 0 to 15, and based on the input, format 
+    the number Pi (from the Math class) to that number of decimal places, and 
+    print it out appropriately.*/
+    
+    System.out.println("\nProblem 3: ");
+    
+    
+    
+    /*Problem 4: Generate a random number from 100,000,000 to 999e18as a decimal 
+    number (no scientific notation). */
+    
+    System.out.println("\nProblem 4: ");
+    
+    
+    
+    }   
+}
