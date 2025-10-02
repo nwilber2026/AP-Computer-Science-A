@@ -5,9 +5,11 @@
 package com.mycompany.formatassignment;
 
 //Imports:
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Scanner;
 import java.util.Locale;
+import java.util.Random;
 
 /**
  *
@@ -17,18 +19,23 @@ public class FormatAssignment {
 
     public static void main(String[] args) {
     
+        
     //Declarations:
         //Declare Scanner
         Scanner scan = new Scanner(System.in);
+        //Declare Generator
+        Random generator = new Random();
+        
+   
         
     /*Problem 1: Ask for total number of students at a school (any school). Now 
     ask for the number of girls at that school. Using Number formatting, output 
-    the % of girls and % of boys at that school.*/    
-        
+    the % of girls and % of boys at that school.*/            
+    
     System.out.println("\nProblem 1: ");
                 
         //Ask user for number of students
-        System.out.println("How many students are at the Cathedral Catholic?: ");
+        System.out.println("How many students are at Cathedral Catholic?: ");
         int students = scan.nextInt();        
         
         //Ask user for number of girl students
@@ -58,35 +65,68 @@ public class FormatAssignment {
     /*Problem 2: Ask for total amout of money in Dollars and Cents. The method must 
     convert this value to British Pounds (gbp - Exchange rate on 9/26 is 0.75 pence to 1$). 
     Output the number of Pounds, mentioning the exchange rate, in a British (locale) 
-    number format. Do the same for the Euro (86 eCents to 1$ today)*/    
-        
+    number format. Do the same for the Euro (86 eCents to 1$ today)*/            
+    
     System.out.println("\nProblem 2: ");
     
         //Ask user for total amount of USD
-        System.out.println("How much money do you have?: (dollars and cents, $--.--) ");
-        int totalUSD = scan.nextInt();
+        System.out.println("How much money do you have?: (dollars and cents) ");
+        double totalUSD = scan.nextDouble();
+        
+        //Calulations for USD to British Pounds
+        double poundConversion = 0.75;
+        double totalPounds = totalUSD * poundConversion;      
+        
+        //Calulations for USD to Euros
+        double euroConversion = 0.86;
+        double totalEuros = totalUSD * euroConversion;
+        
+        //Set up formatting
+        NumberFormat pounds = NumberFormat.getCurrencyInstance(Locale.UK);
+        NumberFormat euros = NumberFormat.getCurrencyInstance(Locale.FRANCE);
         
         //Print all
         System.out.println("The exchange rate for US Dollars to British Pounds is $1 to 75 pence.");
-        System.out.println("You have: " + "British Pounds.");
+        System.out.println("You have: " + pounds.format(totalPounds) + " British Pounds.");
         System.out.println("The exchange rate for US Dollars to Euros is $1 to 86 eCents.");
-        System.out.println("You have: " + "Euros.");
+        System.out.println("You have: " + euros.format(totalEuros) + " Euros.");
        
     
+        
     /*Problem 3: Ask for an integer from 0 to 15, and based on the input, format 
     the number Pi (from the Math class) to that number of decimal places, and 
-    print it out appropriately.*/
+    print it out appropriately.*/    
     
     System.out.println("\nProblem 3: ");
     
+        //Ask user for the integer
+        System.out.println("How many decimals do you want to round pi to?: (0-15) ");
+        int roundingNum = scan.nextInt();
+        
+        //Format Pi
+        String Pi = String.format("%." + roundingNum + "f", Math.PI);
+        
+        //Print all
+        System.out.println("Pi rounded to " + roundingNum + " places is: " + Pi);
     
     
-    /*Problem 4: Generate a random number from 100,000,000 to 999e18as a decimal 
-    number (no scientific notation). */
+        
+    /*Problem 4: Generate a random number from 100,000,000 to 999e18 as a decimal 
+    number (no scientific notation). */    
     
-    System.out.println("\nProblem 4: ");
+    System.out.println("\nProblem 4: ");    
     
+        //Change to decimal format (not scientific notation)
+        DecimalFormat decimal = new DecimalFormat("");        
     
+        //Generate random number btwn 100,000,000-999e18
+        double randNum = generator.nextDouble(999e18 - 100000000) + 100000000;
     
-    }   
+        //Print all
+        System.out.println("Your random very large number is: " + decimal.format(randNum));
+        
+        
+        
+    }
+    
 }
