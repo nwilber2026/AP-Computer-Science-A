@@ -123,7 +123,7 @@ public class EnumeratedTypeandWrapperClassAssignment {
         //Print all
         System.out.println("Your graduation year is: " + gradyrInt);
         System.out.println("The year after you graduate is: " + (gradyrInt+1));
-        System.out.println("Your graduation year in binary looks like: " + binary1);
+        System.out.println("In computer language, you graduate in: " + binary1);
     
 
 
