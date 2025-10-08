@@ -1,1 +1,50 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.anatomyofaclassassignment;
+
+/**
+ *
+ * @author NWilber2026
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        
+    /*
+    Write a class called Car that has 1 string variable called carBrand
+    An int variable called enginePower (in Horse Power)
+    A double variable called maxSpeed (in MPH)
+    A double variable called price (in $)
+    */    
+        
+    //Car class' objects
+    Car vwBug = new Car("VW Bug");         
+    
+    }
+}
+    
+    //Car Class Begins ---------------------------------------------------------
+    
+class Car { 
+
+    private String carBrand = "";
+    //Horsepower
+    
+    //Brand only Constructor
+    public Car(String inBrand){
+        carBrand = inBrand;
+    }
+    //Full Constructor
+    public Car(String inBrand){
+     carBrand = inBrand;
+    } 
+    
+    public String toString(){
+        String myString = "The Car Brand Is: " + carBrand;
+        return myString;
+    }
+}
+
 
