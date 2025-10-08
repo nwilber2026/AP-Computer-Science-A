@@ -20,7 +20,10 @@ public class Main {
     */    
         
     //Car class' objects
-    Car vwBug = new Car("VW Bug");         
+    Car vwBug = new Car("VW Bug");
+    Car toyotaPrius = new Car("Toyota Prius");
+    Car bmwi8 = new Car("BMW i8");
+    Car teslaModel3 = new Car("Tesla Model 3");
     
     }
 }
@@ -46,5 +49,4 @@ class Car {
         return myString;
     }
 }
-
 
