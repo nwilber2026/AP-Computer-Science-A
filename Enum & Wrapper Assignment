@@ -4,6 +4,9 @@
 
 package com.mycompany.enumeratedtypeandwrapperclassassignment;
 
+//Imports:
+import java.util.Scanner;
+
 /**
  *
  * @author NWilber2026
@@ -14,15 +17,16 @@ public class EnumeratedTypeandWrapperClassAssignment {
         //Days of the week
         enum Day {Sunday, Monday,Tuesday, Wednesday, Thursday, Friday, Saturday} 
         //Months of the year
-        enum Month {January, February, March, April, May, June, July, August, September, October, November, December}     
-        
+        enum Month {January, February, March, April, May, June, July, August, September, October, November, December}
+    
+    
+    
     public static void main(String[] args) {
-      
+        
     //Declarations:
         //Declare Scanner
         Scanner scan = new Scanner(System.in);
-        
-        
+                
         
         
     //Problem 1:
@@ -119,8 +123,12 @@ public class EnumeratedTypeandWrapperClassAssignment {
         //Print all
         System.out.println("Your graduation year is: " + gradyrInt);
         System.out.println("The year after you graduate is: " + (gradyrInt+1));
-        System.out.println("Your graduation year in binary looks like: " );
-        
+        System.out.println("Your graduation year in binary looks like: " + binary1);
     
+
+
     }
-}
+        
+       
+    }
+
