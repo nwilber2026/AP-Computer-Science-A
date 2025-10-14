@@ -19,11 +19,17 @@ public class Main {
     A double variable called price (in $)
     */    
         
-    //Car class' objects
+    //Car class OBJECTS
     Car vwBug = new Car("VW Bug");
     Car toyotaPrius = new Car("Toyota Prius");
     Car bmwi8 = new Car("BMW i8");
     Car teslaModel3 = new Car("Tesla Model 3");
+       
+    //Print all
+    System.out.println(vwBug);
+    System.out.println(toyotaPrius);
+    System.out.println(bmwi8);
+    System.out.println(teslaModel3);   
     
     }
 }
@@ -32,21 +38,67 @@ public class Main {
     
 class Car { 
 
-    private String carBrand = "";
-    //Horsepower
+    private String carBrand; 
+    private int enginePower; //horsepower
+    private double maxSpeed; //miles per hour (MPH)
+    private double price; //in dollars ($)
     
     //Brand only Constructor
-    public Car(String inBrand){
-        carBrand = inBrand;
-    }
+        public Car(String inBrand){
+            carBrand = inBrand;
+        }
+
+
+
     //Full Constructor
-    public Car(String inBrand){
-     carBrand = inBrand;
-    } 
-    
-    public String toString(){
-        String myString = "The Car Brand Is: " + carBrand;
-        return myString;
-    }
+        public Car(String inBrand, int inPwr, double inMPH, double inDollars) {
+            carBrand = inBrand;
+            enginePower = inPwr;
+            maxSpeed = inMPH;
+            price = inDollars;
+        } 
+
+
+
+    //Set car brand
+        public String getCarBrand(){
+            return carBrand;
+        }
+        public void setCarBrand(String carBrand){
+            this.carBrand = carBrand;
+        }
+
+
+
+    //Set engine power
+        public int getEnginerPower(){
+            return enginePower;
+        }
+        public void setEnginePower(int enginePower){
+            this.enginePower = enginePower;
+        }
+
+
+
+    //Set max speed    
+         public double getMaxSpeed(){
+            return maxSpeed;
+        }
+        public void setMaxSpeed(double maxSpeed){
+            this.maxSpeed = maxSpeed;
+        }
+
+
+
+    //Set price    
+         public double getPrice(){
+            return price;
+        }
+        public void setPrice(double price){
+            this.price = price;
+        }
+
+         
 }
+
 
