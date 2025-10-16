@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.anatomyofaclassassignment1;
+package com.mycompany.anatomyofaclass;
 
 /**
  *
  * @author NWilber2026
  */
-public class Main {
+public class Anatomyofaclass {
 
     public static void main(String[] args) {
         
-    /*
+/*
     Write a class called Car that has 1 string variable called carBrand
     An int variable called enginePower (in Horse Power)
     A double variable called maxSpeed (in MPH)
@@ -26,33 +26,30 @@ public class Main {
     Car bmwi8 = new Car("BMW i8", 369, 155.0, 147500);
     Car teslaModel3 = new Car("Tesla Model 3", 510, 163.0, 36990);
     
-    
-    //+Rivian car
-    Car Rivian = new Car("Rivian");
-    Rivian.setCarBrand("Rivian");
-    Rivian.setEnginePower(665);
-    Rivian.setMaxSpeed(110.5);
-    Rivian.setPrice(70990);
-    
-    
+           
     //Print all
     System.out.println(vwBug);
     System.out.println(toyotaPrius);
     System.out.println(bmwi8);
     System.out.println(teslaModel3);
-    System.out.println(Rivian);
-    
+      
     }
 }
     
-    //Car Class Begins ---------------------------------------------------------
+//Car Class Begins -------------------------------------------------------------
     
 class Car { 
 
     private String carBrand; 
     private int enginePower; //horsepower
     private double maxSpeed; //miles per hour (MPH)
-    private double price; //in dollars ($)
+    private double price; //in USD ($)
+    
+    
+    //Base Car Constructor
+    public Car (String inBrand){
+        carBrand = inBrand;
+    }
     
     
     //Full Constructor
@@ -62,14 +59,8 @@ class Car {
             maxSpeed = inMPH;
             price = inDollars;
         } 
-
-       
-    //Rivian special constructor
-        public Car(String inBrand){
-        carBrand = inBrand;
-        }
         
-
+        
     //Set car brand
         public String getCarBrand(){
             return carBrand;
@@ -105,9 +96,11 @@ class Car {
             price = inDollars;
         }
 
-    //toString method (I learned we need this to properly print out the strings)
-        @Override
-        public String toString(){
-            return "Make and Model: " + carBrand + "\nHorsepower: " + enginePower + "\nMax Speed: " + maxSpeed + "\nPrice: " + price + "\n";            
-        } 
-}
+    //"toString" method so it will print the strings
+    @Override
+    public String toString(){
+        //Print all as group
+        return "Car Brand: " + carBrand + "\nEngine Power: " + enginePower + " horsepower" + "\nMax Speed : " + maxSpeed + " MPH" + "\nPrice : $" + price + "\n";
+    }
+    
+} 
