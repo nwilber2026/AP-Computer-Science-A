@@ -5,8 +5,9 @@
 package com.mycompany.interestrateproject;
 
 //Imports:
-import. java.text.NumberFormat;
-import. java.util.Scanner;
+import java.util.Scanner;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 
 /**
@@ -21,7 +22,7 @@ public class InterestRateProject {
         Scanner scan = new Scanner (System.in);
         
         //Ask user for input of money (USD)
-        System.out.println("Input the financial amount: ");
+        System.out.println("\nInput the financial amount: ");
         //Scan for input
         double amount = scan.nextDouble();
         
@@ -29,12 +30,27 @@ public class InterestRateProject {
         System.out.println("Input how many months for repayment: ");
         //Scan for input
         int months = scan.nextInt();
-               
+                     
         //Declare calculator object (referencing other class)
         InterestRateCalculator calculator = new InterestRateCalculator();
-        //Method for calculations                             
+        
+        //Formatting
+            //Format for USD
+            NumberFormat usd = NumberFormat.getCurrencyInstance(Locale.US);             
+            
+            //Format for percentage in interest rate
+            NumberFormat percent = NumberFormat.getPercentInstance();
+            //Allow for two decimal places in percentages
+            percent.setMinimumFractionDigits(2);
+                        
+        //Method for calculations       
         calculator.calcRepayment(amount, months);
-                
+        
+        //Print all
+        System.out.println("\nInital Loan Amount: " + usd.format(amount));
+        System.out.println("Intrest Rate: " + percent.format(InterestRateCalculator.RATE));
+        System.out.println("Amount of time to repay: " + months + " months");
+        
     }
 }    
         
@@ -43,16 +59,27 @@ public class InterestRateProject {
 
 class InterestRateCalculator {
 
-    //Public Rate Constant (4.5%)
-    public static final double RATE = 0.045;
+//Format for USD
+    NumberFormat usd = NumberFormat.getCurrencyInstance(Locale.US);           
     
-    //Private variables for money and time
-    private double amount;
-    private double months;
+//Public Rate Constant (4.5%)
+    public static final double RATE = 0.0453;
     
-    //Public method that contains the calculations
+//Private variables for money and time
+    private double finalPayment;
+    private double monthlyPayment;
+      
+//Public method that contains the calculations
+    public void calcRepayment (double amount, int months){
     
-    
+        //Monthly Payment Calculation
+        monthlyPayment = (amount/months) + (amount*RATE/months);
+        
+        //Total Payment Calculation
+        finalPayment = monthlyPayment * months;
+         
+//Print all        
+    System.out.println("Monthly Payment Amount: " + usd.format(monthlyPayment));
+    System.out.println("Total Payment Amount: "  + usd.format(finalPayment));
+    }
 }
-
-
