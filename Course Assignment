@@ -1,0 +1,123 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.coursedetails;
+
+/**
+ *
+ * @author silve
+ */
+
+
+//Course Class Begins ----------------------------------------------------------
+class Course{
+
+    //Instance data for private info
+    private String courseTitle;
+    private String courseCode;
+    private int pointsTotal;
+    private String instructorName;
+    
+    //Course constructor for all
+    public Course(String inCourseTitle, String inCourseCode, int inPointsTotal, String inInstructorName){
+        //Initialize the instance Data
+        this.courseTitle = inCourseTitle;
+        this.courseCode = inCourseCode;
+        this.pointsTotal = inPointsTotal;
+        this.instructorName = inInstructorName;                        
+    }
+
+    //Course Constructor for name only
+    public Course(String inCourseTitle){
+        this.courseTitle = inCourseTitle;
+        this.courseCode = "";
+        this.pointsTotal = 0;
+        this.instructorName = "";
+    }
+    //Methods for Course Title
+        //Accessor Method (Getter) for title
+        public String getCourseTitle(){
+        return courseTitle;
+        }
+        //Mutator Method (Setter) for title
+        public void setCourseTitle(String courseTitle){
+        this.courseTitle = courseTitle;    
+        }
+
+    //Methods for Course Code
+        //Accessor Method (Getter) for code
+        public String getCourseCode(){
+        return courseCode;
+        }
+        //Mutator Method (Setter) for code
+        public void setCourseCode(String courseCode){
+        this.courseCode = courseCode;    
+        }
+
+    //Methods for Points Total
+        //Accessor Method (Getter) for points total
+        public int getPointsTotal(){
+        return pointsTotal;
+        }
+        //Mutator Method (Setter) for points total
+        public void setPointsTotal(int pointsTotal){
+        this.pointsTotal = pointsTotal;    
+        }
+
+    //Methods for Instructor Name
+        //Accessor Method (Getter) for instructor name
+        public String getInstructorName(){
+        return instructorName;
+        }
+        //Mutator Method (Setter) for instructor name
+        public void setInstructorName(String instructorName){
+        this.instructorName = instructorName;    
+        }    
+    //toString Method (gives multiline desc.)    
+    @Override
+    public String toString(){
+    return "   Course Title: " + courseTitle + "\n"
+           + "   Course Code: " + courseCode + "\n"
+           + "   Points Total: " + pointsTotal + "\n"
+           + "   Instructor's Name: " + instructorName + "\n"; 
+    }
+}
+
+
+//Driver Class Begins ----------------------------------------------------------
+public class CourseDetails{
+    
+    public static void main(String[] args){
+    
+    //Course 1
+        //Instantiate and update course objects (full object constructor)
+        Course course1 = new Course("STEAM Capstone and Practicum", "SC&P", 10, "Mr. Knoll");
+        //Print all
+        System.out.println("\nCourse 1: \n" + course1.toString());
+        
+    //Course 2
+        //Instantiate and update course objects (full object constructor)
+        Course course2 = new Course("Campus Ministry 12", "CM12", 10, "Mrs. Schrimpf");
+        //Print all
+        System.out.println("Course 2: \n" + course2.toString());    
+        
+    //Course 3
+        //Instantiate and update course objects (full object constructor)
+        Course course3 = new Course("Advanced STEAM", "ASteam", 10, "Mrs. Pena");
+        //Print all
+        System.out.println("Course 3: \n" + course3.toString()); 
+        
+    //Course 4
+        //Instantiate and update course object (name only constructor)
+        Course course4 = new Course("AP Computer Science A");
+        //Rest of values
+        course4.setCourseCode("APCSA");
+        course4.setPointsTotal(10);
+        course4.setInstructorName("Dr. Nelson");       
+        //Print all
+        System.out.println("Course 4: \n" + course4.toString());
+    }
+}
+
+
