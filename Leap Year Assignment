@@ -1,0 +1,60 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.leapyearassignment;
+
+//Declarations:
+import java.util.Scanner;
+
+/**
+ *
+ * @author NWilber2026
+ */
+
+/*Instructions: Write a program that reads an integer value from the user representing 
+a year. The purpose of the program is to determine if the year is a leap year 
+(and therefore has 29 days in February) in the Gregorian calendar. Use a boolean
+variable isLeapYear for this (initialize to false).*/  
+        
+public class LeapYearAssignment {
+    public static void main(String[] args) {
+    
+    //Ask user for year imput (set up scanner)
+    Scanner scan = new Scanner (System.in);
+    System.out.print("\nPlease input a year: ");
+    int year = scan.nextInt();
+    
+    //Boolean set up
+    boolean isLeapYear = false;
+    
+    //Give error if "year1" is less than 1582 because of the Gregorian Calendar
+    if (year < 1582){
+    System.out.print("\nError: Inputted year must be after 1582 for the beginning of the Gregorian Calendar.");
+    }
+    
+    else{
+    //Calculations for leap year
+    //Must be divisible by 4 and 100 or divisuble by 400    
+        
+        //Check if divisible by 4 and 100
+            if (year % 4 ==0 & year % 100 !=0){
+            isLeapYear  = true;        
+            }
+        
+        //Check if divisible by 400
+            if (year % 400 == 0){
+            isLeapYear = true;    
+            }
+        
+    //Boolean true
+        if (isLeapYear){
+        System.out.println("\nThe year " + year + " is a leap year.");
+        }
+    //Boolean False
+        else{
+        System.out.println("\nThe year " + year + " is NOT a leap year.");
+        }
+    }
+    }
+}
