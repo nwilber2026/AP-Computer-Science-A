@@ -28,40 +28,83 @@ public class MyStore {
         double total = 0.0;
         int count = 0;
     
-    //Items descriptions
+    //Item names
     Item[] items = {
-    new Item("T Shirt", 29.99);    
-    new Item("Shoes", 125.99); 
-    new Item("Jeans", 60.99); 
-    new Item("Jacket", 250.00); 
-    new Item("Hat", 25.99); 
-    new Item("Shorts", 75.99); 
-    new Item("Blouse", 88.99); 
+    new Item("T Shirt", 29.99),    
+    new Item("Shoes", 125.99), 
+    new Item("Jeans", 60.99), 
+    new Item("Jacket", 250.00), 
+    new Item("Hat", 25.99), 
+    new Item("Shorts", 75.99),
+    new Item("Blouse", 88.99), 
+    };
+        
+    //Print all (intro prompt)   
+        System.out.println("\nYour max budget is: $" + MAX_BUDGET);
+        System.out.println("Available items: ");
+        System.out.println("    T Shirt - $29.99");
+        System.out.println("    Shoes - $125.99");
+        System.out.println("    Jeans - $60.99");
+        System.out.println("    Jacket - $250.00");
+        System.out.println("    Hat - $25.99");
+        System.out.println("    Shorts - $75.99");
+        System.out.println("    Blouse - $88.99\n");
+        
+    //While loop
+    while (true) {
+        System.out.println("Input item name you want to buy (type STOP to check-out): " );
+        //Scan for user input
+        String cart = scan.nextLine();
+        
+        if (cart.equalsIgnoreCase("STOP")) {
+        break;
+        }
+        
+    //Searching for the chosen items
+    Item chosen = null;
+    for (Item i : items) {
+        if (i.getName().equalsIgnoreCase(cart)) {
+        chosen = i;
+        break;
+        }   
     }
     
+    //If chosen item doesn't exist
+    if (chosen == null) {
+        System.out.println("We do not have that item in stock. Sorry please select something else.\n");
+        continue;
+    }
     
-    //Print all    
-    System.out.println("\nMax Budget is: $" + MAX_BUDGET);
-    System.out.println("Available items: ");
-    System.out.println("    T Shirt - $29.99");
-    System.out.println("    Shoes - $125.99");
-    System.out.println("    Jeans - $60.99");
-    System.out.println("    Jacket - $250.00");
-    System.out.println("    Hat - $25.99");
-    System.out.println("    Shorts - $75.99");
-    System.out.println("    Blouse - $88.99\n");
+    //Make sure cart is under the max budget ($250.00)    
+    if (total + chosen.getPrice() > MAX_BUDGET) {
+        System.out.println("\nIf you add this, it will go over you max budget of: $" + MAX_BUDGET);
+        System.out.println("item has been removed from cart");
+        System.out.println("Total amount spent: $" + String.format("%.2f", total));
+        System.out.println("Total amount remaining: $" + String.format("%.2f",(MAX_BUDGET - total)) + "\n");
+        continue;
+    }    
     
-    
-    
-    
-    
-    
-    
-
-
-
-}
-}        
+    //If cart is under max budget
+        total += chosen.getPrice();
+        count++;
+        
+    //Print all (closing prompt #1)    
+    System.out.println("\nAdded " + chosen.toString() + " to cart.");
+    System.out.println("Number of items: " + count);
+        //Find amount of capital left (also amount spent)
+        System.out.println("Total amount spent so far: $" + String.format("%.2f", total) );
+        System.out.println("Amount of budget remaining: $" + String.format("%.2f",(MAX_BUDGET - total) ) + "\n");
+    }
+    //Print all (closing prompt #2)    
+    System.out.println("\nFinal amount payed: $" + String.format("%.2f", total) );
+    System.out.println("Change left: $" + String.format("%.2f", (MAX_BUDGET - total) ) );
+    System.out.println("Number of items in cart: " + count);
+    System.out.println("Goodbye");
+                
+    //Close System
+    scan.close();
+           
+}}     
 //Item Class Begins ------------------------------------------------------------
 class Item { 
     
@@ -98,7 +141,7 @@ class Item {
         //toString Method
         @Override
         public String toString(){
-        return "\nItem: " + strName + " , Price: " + dblPrice;
+        return " Item: " + strName + " , (Price: " + dblPrice + ")";
         }
-}      
-
+}
+      
