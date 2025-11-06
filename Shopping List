@@ -1,0 +1,48 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.shoppinglist;
+
+//Imports:
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+/**
+ *
+ * @author NWilber2026
+ */
+public class ShoppingList {    
+    public static void main(String[] args) {
+    
+    //Declare Scanner
+    Scanner scan = new Scanner(System.in);
+    
+    //Create Array List
+    ArrayList <String> ShopList = new ArrayList();
+        //Create Objects in List
+        ShopList.add("");
+        ShopList.add("");
+        ShopList.add("");
+        ShopList.add("");
+        ShopList.add("");
+    
+    //Ask user for shopping list
+    System.out.println("Please input your shopping list: ");
+    
+    //Scan for user's input
+    list1 = scan.nextLine();
+    
+    
+        
+        
+    //Pring All
+    System.out.println("Your shopping list: ");
+    System.out.println(     "input");
+    
+            
+            
+    
+    }
+}
