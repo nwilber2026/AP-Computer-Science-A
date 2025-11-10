@@ -15,31 +15,39 @@ import java.util.ArrayList;
  */
 public class ShoppingList {    
     public static void main(String[] args) {
-    
+//User Inputs Items
+
     //Declare Scanner
     Scanner scan = new Scanner(System.in);
     
     //Create Array List
     ArrayList <String> ShopList = new ArrayList();
-        //Create Objects in List
-        ShopList.add("");
-        ShopList.add("");
-        ShopList.add("");
-        ShopList.add("");
-        ShopList.add("");
-    
+            
     //Ask user for shopping list
-    System.out.println("Please input your shopping list: ");
-    
-    //Scan for user's input
-    list1 = scan.nextLine();
-    
-    
+    System.out.println("\nPlease input your shopping list: (Type 'STOP' when finsihed)");        
+        while (true) {
+        //System.out.println("Input next item: (or 'STOP' to finish)");
+            //Scan for user's input
+            String item;       
+            item = scan.nextLine();
+                        
+            //Exit ('STOP' process)    
+            if (item.equalsIgnoreCase("STOP")){
+            break;
+            }
+            
+            //Add item to the list (if not 'STOP')
+            ShopList.add(item);            
+        }
+          
+    //Print all
+    System.out.println("This is your shopping list: ");
+    System.out.println(ShopList);
         
         
-    //Pring All
-    System.out.println("Your shopping list: ");
-    System.out.println(     "input");
+//Removing Item
+    System.out.println("");
+    
     
             
             
