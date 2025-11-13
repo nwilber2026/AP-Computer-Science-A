@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class ShoppingList {    
     public static void main(String[] args) {
+
 //User Inputs Items
 
     //Declare Scanner
@@ -23,34 +24,93 @@ public class ShoppingList {
     //Create Array List
     ArrayList <String> ShopList = new ArrayList();
             
-    //Ask user for shopping list
-    System.out.println("\nPlease input your shopping list: (Type 'STOP' when finsihed)");        
-        while (true) {
-        //System.out.println("Input next item: (or 'STOP' to finish)");
-            //Scan for user's input
-            String item;       
-            item = scan.nextLine();
+    //Ask user for shopping list (until 'STOP')
+    System.out.println("\nPlease input your shopping list below:");        
+    System.out.println("Input items one at a time. Type 'STOP' when finsihed.\n");
+    
+    while (true) {
+        System.out.println("Input item: (or 'STOP' to finish)");
+        //Scan for user's input
+        String item = scan.nextLine().trim();
                         
-            //Exit ('STOP' process)    
-            if (item.equalsIgnoreCase("STOP")){
-            break;
-            }
-            
-            //Add item to the list (if not 'STOP')
-            ShopList.add(item);            
+        //Exit ('STOP' process)    
+        if (item.equalsIgnoreCase("STOP")){
+        break;
         }
           
-    //Print all
-    System.out.println("This is your shopping list: ");
-    System.out.println(ShopList);
+        //Check if list is empty
+        if (item.isEmpty()) {
+            System.out.println("\nNo item entered. Try again.");           
+            continue;
+        }
         
-        
-//Removing Item
-    System.out.println("");
-    
-    
-            
-            
-    
+        //Add item to the array list (if not 'STOP')        
+        ShopList.add(item);    
+        System.out.println("-" + item + "- added\n");
     }
+                                   
+//Print list
+    
+    //Check if empty
+    if (ShopList.isEmpty()) {
+    System.out.println("\nList is empty.");
+    }
+    
+    else {
+    //Print numbered list
+    System.out.println("\nThis is your shopping list: ");
+        for (int i = 0; i < ShopList.size(); i++) {
+        System.out.println((i + 1) + ". " + ShopList.get(i));
+        }
+    }
+    
+//Removing Item
+    System.out.print("\nDo you want to remove an item? (yes/no): ");
+    String remove = scan.nextLine().trim();
+    
+    if (remove.equalsIgnoreCase("yes") || remove.equalsIgnoreCase("y")) {
+        while (true) {
+        System.out.print("\nEnter the number of the item you want to remove:");
+        //Scan for user input
+        String numRemove = scan.nextLine().trim();
+            try {
+                int index = Integer.parseInt(numRemove);
+                
+                //Check if the input number is in the list
+                if (index >= 1 && index <= ShopList.size() ) {
+                String removedItem = ShopList.remove(index - 1);
+                
+                //Tell user that item is removed
+                System.out.print("\nRemoved -" + removedItem + "- from shopping list.");
+                
+                // Redisplay the updated list
+                if (ShopList.isEmpty()) {
+                System.out.println("Your shopping list is now empty.");
+                    } 
+                else {
+                    System.out.println("\nUpdated shopping list:");
+                    for (int i = 0; i < ShopList.size(); i++) {
+                    System.out.println((i + 1) + ". " + ShopList.get(i));
+                    }   
+                }
+                break; //exit the removal loop
+                }
+                else {
+                System.out.println("Number not on list. Try again.");
+                }
+            }
+            catch (NumberFormatException e){
+                System.out.println("Please enter a valid number");
+            }
+        
+        }
+        }
+            else {
+            System.out.println("No items were removed.");
+            }
+    
+//Close scanner
+scan.close();
+}    
 }
+
