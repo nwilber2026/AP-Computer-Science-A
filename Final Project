@@ -1,0 +1,47 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.finalproject;
+
+//Imports:
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+
+// * @author NWilber2026
+//Final Project for Semester 1 : Madlibs Game
+
+public class FinalProject {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    
+    //declarations
+    //ask user to choose story 1 2 or 3
+    //ask them to give needed words
+    //print story and list the words they gave
+    //ask if they want to play again
+    //make sure any numbers can't be input as words (and vice versa)
+    
+    
+    }
+}
+
+
+//------------------------------------------------------------------------------
+//Story1 class begins-----------------------------------------------------------
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//Story2 class begins-----------------------------------------------------------
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//Story3 class begins-----------------------------------------------------------
+//------------------------------------------------------------------------------
