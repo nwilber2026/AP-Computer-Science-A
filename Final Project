@@ -98,20 +98,21 @@ public class FinalProject {
     //--------------------------------------------------------------------------
     public static String createStory1(Scanner scan) {
         // Ask user for word inputs
-            String adjective1 = getNonEmptyString(scan, "\nGive me an adjective: ");
-            String schoolSupply1 = getNonEmptyString(scan, "Give me school supply: ");
-            String verb1 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
-            String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
-            String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
+            String adjective1 = getValidWord(scan, "\nGive me an adjective: ");
+            String schoolSupply1 = getValidWord(scan, "Give me school supply: ");
+            String verb1 = getValidWord(scan, "Give me a verb ending in -ing: ");
+            String adjective2 = getValidWord(scan, "Give me an adjective: ");
+            String pluralNoun1 = getValidWord(scan, "Give me a plural noun: ");
             int number1 = getValidInteger(scan, "Give me a number: ");
-            String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ed: ");
-            String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
-            String noun1 = getNonEmptyString(scan, "Give me a noun: ");
-            String adjective4 = getNonEmptyString(scan, "Give me an adjective: ");
+            String verb2 = getValidWord(scan, "Give me a verb ending in -ed: ");
+            String adjective3 = getValidWord(scan, "Give me an adjective: ");
+            String noun1 = getValidWord(scan, "Give me a noun: ");
+            String adjective4 = getValidWord(scan, "Give me an adjective: ");
             
         // Build the story with inputs
-        return "At the 5 minute bell at during break at Cathedral Catholic High \n"
-                + "School, I start the " + adjective1 + " trek from the lunchtables \n"
+        return """
+               At the 5 minute bell at during break at Cathedral Catholic High 
+               School, I start the """ + adjective1 + " trek from the lunchtables \n"
                 + "toward the STEM buildings. First I grab my " + schoolSupply1
                 + " and begin \n" + verb1 + " down the path. The walk is pretty \n"
                 + adjective2 + ", especially because we have to walk all the way \n"
@@ -132,16 +133,16 @@ public class FinalProject {
     //--------------------------------------------------------------------------
     public static String createStory2(Scanner scan) {       
         // Ask user for word inputs
-            String adjective1 = getNonEmptyString(scan, "\nGive me an adjective: ");
-            String seaCreature1 = getNonEmptyString(scan, "Give me a type of sea creature: ");
-            String verb1 = getNonEmptyString(scan, "Give me an action verb: ");
-            String noun1 = getNonEmptyString(scan, "Give me a noun: ");
-            String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
-            String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
-            String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
-            String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
-            String noun2 = getNonEmptyString(scan, "Give me a noun: ");
-            String exclamation1 = getNonEmptyString(scan, "Give me an exclamation: ");
+            String adjective1 = getValidWord(scan, "\nGive me an adjective: ");
+            String seaCreature1 = getValidWord(scan, "Give me a type of sea creature: ");
+            String verb1 = getValidWord(scan, "Give me an action verb: ");
+            String noun1 = getValidWord(scan, "Give me a noun: ");
+            String adjective2 = getValidWord(scan, "Give me an adjective: ");
+            String pluralNoun1 = getValidWord(scan, "Give me a plural noun: ");
+            String verb2 = getValidWord(scan, "Give me a verb ending in -ing: ");
+            String adjective3 = getValidWord(scan, "Give me an adjective: ");
+            String noun2 = getValidWord(scan, "Give me a noun: ");
+            String exclamation1 = getValidWord(scan, "Give me an exclamation: ");
                     
         // Build the story with inputs
         return "Captain Nelson woke up to a " + adjective1 + " morning on the open \n"
@@ -162,16 +163,16 @@ public class FinalProject {
     //--------------------------------------------------------------------------
     public static String createStory3(Scanner scan) {       
         // Ask user for word inputs
-        String planetName1 = getNonEmptyString(scan, "\nGive me a planet name: ");
-        String adjective1 = getNonEmptyString(scan, "Give me an adjective: ");
-        String noun1 = getNonEmptyString(scan, "Give me a noun: ");
-        String verb1 = getNonEmptyString(scan, "Give me a verb: ");
-        String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
-        String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
+        String planetName1 = getValidWord(scan, "\nGive me a planet name: ");
+        String adjective1 = getValidWord(scan, "Give me an adjective: ");
+        String noun1 = getValidWord(scan, "Give me a noun: ");
+        String verb1 = getValidWord(scan, "Give me a verb: ");
+        String pluralNoun1 = getValidWord(scan, "Give me a plural noun: ");
+        String adjective2 = getValidWord(scan, "Give me an adjective: ");
         int number1 = getValidInteger(scan, "Give me a number: ");
-        String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
-        String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
-        String noun2 = getNonEmptyString(scan, "Give me a noun: ");
+        String verb2 = getValidWord(scan, "Give me a verb ending in -ing: ");
+        String adjective3 = getValidWord(scan, "Give me an adjective: ");
+        String noun2 = getValidWord(scan, "Give me a noun: ");
                 
         // Build the story with inputs
         return "The Space Academy sent me on a mission to explore Planet " + planetName1
@@ -186,20 +187,36 @@ public class FinalProject {
                + planetName1 + " held secrets no one back home would believe.\n";
     }
   
+    //==========================================================================
+    //Validation:
+    //==========================================================================
     
-    //Validation---------------------------------------------------------------- 
-        //Word Verification
-        public static String getNonEmptyString(Scanner scan, String prompt) {
-            String value = "";
-            while (value.trim().isEmpty()) {
+        //Word Verification-----------------------------------------------------
+            public static String getValidWord(Scanner scan, String prompt) {
+            String input;
+            while (true) {
                 System.out.print(prompt);
-                value = scan.nextLine();
+                input = scan.nextLine().trim(); // Use nextLine and trim whitespace
+
+            // Check if the input is empty
+            if (input.isEmpty()) {
+            System.out.println("Error: Input cannot be empty. Please try again.");
+            continue;
             }
-            return value;
-        }
+            
+            // Check if the input contains ONLY letters and spaces          
+            if (input.matches("[a-zA-Z\\s]+")) {
+            return input;
+            } 
+            
+            else {
+            System.out.println("Error: Please enter words only (no numbers or special characters). Try again.");
+            }
+            }
+            }   
         
-        //Number Verification
-        public static int getValidInteger(Scanner scan, String prompt) {
+        //Number Verification---------------------------------------------------
+            public static int getValidInteger(Scanner scan, String prompt) {
             System.out.print(prompt);
 
             while (!scan.hasNextInt()) {
@@ -210,5 +227,5 @@ public class FinalProject {
             int number = scan.nextInt();
             scan.nextLine(); // clear leftover newline
             return number;
-    }
+            }   
 }
