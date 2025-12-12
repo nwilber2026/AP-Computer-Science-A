@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.finalproject;
+package com.mycompany.finalprojectapcsa;
 
-//Imports:
 import java.util.Scanner;
 
-
-// * @author NWilber2026
-//Final Project for Semester 1 : Madlibs Game
-
-public class FinalProject {
+/**
+ *
+ * @author NWilber2026
+ */
+public class FinalProjectAPCSA {
     public static void main(String[] args) {        
         
         
@@ -110,22 +109,21 @@ public class FinalProject {
             String adjective4 = getValidWord(scan, "Give me an adjective: ");
             
         // Build the story with inputs
-        return """
-               At the 5 minute bell at during break at Cathedral Catholic High 
-               School, I start the """ + adjective1 + " trek from the lunchtables \n"
-                + "toward the STEM buildings. First I grab my " + schoolSupply1
-                + " and begin \n" + verb1 + " down the path. The walk is pretty \n"
-                + adjective2 + ", especially because we have to walk all the way \n"
-                + "around the football field instead of cutting across it. Along \n"
-                + "the way, I usually see a bunch of " + pluralNoun1 + " scattered \n"
-                + "near the track. After about " + number1 + " minutes of walking, I \n"
-                + "finally reach the turn where everyone starts to " + verb2 + " because \n"
-                + "we know we are close. When the STEM building comes into view, it \n"
-                + "always feels " + adjective3 + ". I walk inside, hoping I am not the \n"
-                + "last one, because if I am, I will be the one doing the prayer of \n"
-                + "the day in front of the class. I sit down, place my \n" + noun1
-                + " on the desk, and sigh in relief, glad the long walk is \n" 
-                + adjective4 + " at last.\n";              
+        return "At the 5 minute bell at during break at Cathedral Catholic High" 
+               + "School, I start the " + adjective1 + " trek from the lunchtables \n"
+               + "toward the STEM buildings. First I grab my " + schoolSupply1
+               + " and begin \n" + verb1 + " down the path. The walk is pretty \n"
+               + adjective2 + ", especially because we have to walk all the way \n"
+               + "around the football field instead of cutting across it. Along \n"
+               + "the way, I usually see a bunch of " + pluralNoun1 + " scattered \n"
+               + "near the track. After about " + number1 + " minutes of walking, I \n"
+               + "finally reach the turn where everyone starts to " + verb2 + " because \n"
+               + "we know we are close. When the STEM building comes into view, it \n"
+               + "always feels " + adjective3 + ". I walk inside, hoping I am not the \n"
+               + "last one, because if I am, I will be the one doing the prayer of \n"
+               + "the day in front of the class. I sit down, place my \n" + noun1
+               + " on the desk, and sigh in relief, glad the long walk is \n" 
+               + adjective4 + " at last.\n";              
     }
 
     //--------------------------------------------------------------------------
@@ -194,25 +192,25 @@ public class FinalProject {
         //Word Verification-----------------------------------------------------
             public static String getValidWord(Scanner scan, String prompt) {
             String input;
-            while (true) {
+                while (true) {
                 System.out.print(prompt);
                 input = scan.nextLine().trim(); // Use nextLine and trim whitespace
 
             // Check if the input is empty
-            if (input.isEmpty()) {
-            System.out.println("Error: Input cannot be empty. Please try again.");
-            continue;
-            }
+                if (input.isEmpty()) {
+                System.out.println("Error: Input cannot be empty. Please try again.");
+                continue;
+                }
             
             // Check if the input contains ONLY letters and spaces          
-            if (input.matches("[a-zA-Z\\s]+")) {
-            return input;
-            } 
+                if (input.matches("[a-zA-Z\\s]+")) {
+                return input;
+                } 
             
-            else {
-            System.out.println("Error: Please enter words only (no numbers or special characters). Try again.");
-            }
-            }
+                    else {
+                    System.out.println("Error: Please enter words only (no numbers or special characters). Try again.");
+                    }
+                }
             }   
         
         //Number Verification---------------------------------------------------
