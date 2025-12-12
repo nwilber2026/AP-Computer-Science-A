@@ -6,42 +6,209 @@ package com.mycompany.finalproject;
 
 //Imports:
 import java.util.Scanner;
-import java.util.ArrayList;
-
 
 
 // * @author NWilber2026
 //Final Project for Semester 1 : Madlibs Game
 
 public class FinalProject {
+    public static void main(String[] args) {        
+        
+        
+//==============================================================================
+//Overall Setup for the proejct outputs:        
+//==============================================================================        
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    //Declare Scanner
+    Scanner scan = new Scanner(System.in);
     
-    //declarations
-    //ask user to choose story 1 2 or 3
-    //ask them to give needed words
-    //print story and list the words they gave
-    //ask if they want to play again
-    //make sure any numbers can't be input as words (and vice versa)
+    //Allow for keep playing function
+    boolean keepPlaying = true;
+    while (keepPlaying) {
     
+    //Title Page
+    System.out.println("========================================================");
+    System.out.println("                  Welcome to Mad Libs!                  ");
+    System.out.println("========================================================");
     
+    //Present story options-----------------------------------------------------
+    //Print All
+    System.out.println("\nPlease select one of the following stories;");
+    System.out.println("\nStory 1: Walk Down to Steam");
+    System.out.println("Story 2: Pirate Adventure");
+    System.out.println("Story 3: Space Exploring");
+
+    
+    //Scan for user input on the story choice-----------------------------------
+    int choice = -1;  // start with invalid value
+
+        // Loop until the user enters 1, 2, or 3
+        while (choice != 1 && choice != 2 && choice != 3) {
+            System.out.print("\nType 1, 2, or 3: ");
+            if (scan.hasNextInt()) {
+            choice = scan.nextInt();
+            } 
+            else {
+            // Clear invalid input
+            scan.next();
+            }
+        }
+
+    // Clear leftover newline character
+    scan.nextLine();
+
+    String finalStory = "";    
+    
+    //"If" statements to only run one story (chosen)----------------------------
+    if (choice == 1) {
+        finalStory = createStory1(scan);
+    } 
+    else if (choice == 2) {
+        finalStory = createStory2(scan);
+    } 
+    else if (choice == 3) {
+        finalStory = createStory3(scan);
+    }
+    
+    //Print Story Constrctor----------------------------------------------------
+    System.out.println("\n========================================================");
+    System.out.println("This is your completed story: \n");
+    System.out.println(finalStory);
+    System.out.println("========================================================\n");
+    
+    //Ask user if they want to play again
+    System.out.print("Do you want to play again? (type y/n): ");
+        //If yes (y)
+        String again = scan.nextLine();
+        if (!again.equals("y")) {
+            keepPlaying = false;
+        }
+    }
+        //If no (n)
+        System.out.println("Thanks for playing!");
+        scan.close();                
+    }    
+//==============================================================================
+//Stories and cooresponding word inputs:
+//==============================================================================    
+
+
+    //--------------------------------------------------------------------------
+    //Story 1
+    //--------------------------------------------------------------------------
+    public static String createStory1(Scanner scan) {
+        // Ask user for word inputs
+            String adjective1 = getNonEmptyString(scan, "\nGive me an adjective: ");
+            String schoolSupply1 = getNonEmptyString(scan, "Give me school supply: ");
+            String verb1 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
+            String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
+            String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
+            int number1 = getValidInteger(scan, "Give me a number: ");
+            String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ed: ");
+            String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
+            String noun1 = getNonEmptyString(scan, "Give me a noun: ");
+            String adjective4 = getNonEmptyString(scan, "Give me an adjective: ");
+            
+        // Build the story with inputs
+        return "At the 5 minute bell at during break at Cathedral Catholic High \n"
+                + "School, I start the " + adjective1 + " trek from the lunchtables \n"
+                + "toward the STEM buildings. First I grab my " + schoolSupply1
+                + " and begin \n" + verb1 + " down the path. The walk is pretty \n"
+                + adjective2 + ", especially because we have to walk all the way \n"
+                + "around the football field instead of cutting across it. Along \n"
+                + "the way, I usually see a bunch of " + pluralNoun1 + " scattered \n"
+                + "near the track. After about " + number1 + " minutes of walking, I \n"
+                + "finally reach the turn where everyone starts to " + verb2 + " because \n"
+                + "we know we are close. When the STEM building comes into view, it \n"
+                + "always feels " + adjective3 + ". I walk inside, hoping I am not the \n"
+                + "last one, because if I am, I will be the one doing the prayer of \n"
+                + "the day in front of the class. I sit down, place my \n" + noun1
+                + " on the desk, and sigh in relief, glad the long walk is \n" 
+                + adjective4 + " at last.\n";              
+    }
+
+    //--------------------------------------------------------------------------
+    //Story 2
+    //--------------------------------------------------------------------------
+    public static String createStory2(Scanner scan) {       
+        // Ask user for word inputs
+            String adjective1 = getNonEmptyString(scan, "\nGive me an adjective: ");
+            String seaCreature1 = getNonEmptyString(scan, "Give me a type of sea creature: ");
+            String verb1 = getNonEmptyString(scan, "Give me an action verb: ");
+            String noun1 = getNonEmptyString(scan, "Give me a noun: ");
+            String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
+            String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
+            String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
+            String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
+            String noun2 = getNonEmptyString(scan, "Give me a noun: ");
+            String exclamation1 = getNonEmptyString(scan, "Give me an exclamation: ");
+                    
+        // Build the story with inputs
+        return "Captain Nelson woke up to a " + adjective1 + " morning on the open \n"
+               + "ocean. His ship was surrounded by " + seaCreature1 + " as he prepared \n"
+               + "to " + verb1 + " toward a mysterious island rumored to hide legendary \n"
+               + "treasure. With his trusty " + noun1 + " in hand, he marched across \n"
+               + "the " + adjective2 + " deck, calling his crew of fearless \n" + pluralNoun1
+               + " to join him. Soon they were " + verb2 + " through the thick jungle, \n"
+               + "searching for the entrance to the ancient cave. Inside, everything \n"
+               + "felt strangely " + adjective3 + " At last, Captain Starboard spotted \n"
+               + "a glowing " + noun2 + " sitting atop a stone pedestal. He shouted, \n"
+               + exclamation1 + "!, knowing this clue would lead him one step closer \n"
+               + "to the mountain of gold he had been chasing for years.\n";
+    }
+        
+    //--------------------------------------------------------------------------
+    //Story 3
+    //--------------------------------------------------------------------------
+    public static String createStory3(Scanner scan) {       
+        // Ask user for word inputs
+        String planetName1 = getNonEmptyString(scan, "\nGive me a planet name: ");
+        String adjective1 = getNonEmptyString(scan, "Give me an adjective: ");
+        String noun1 = getNonEmptyString(scan, "Give me a noun: ");
+        String verb1 = getNonEmptyString(scan, "Give me a verb: ");
+        String pluralNoun1 = getNonEmptyString(scan, "Give me a plural noun: ");
+        String adjective2 = getNonEmptyString(scan, "Give me an adjective: ");
+        int number1 = getValidInteger(scan, "Give me a number: ");
+        String verb2 = getNonEmptyString(scan, "Give me a verb ending in -ing: ");
+        String adjective3 = getNonEmptyString(scan, "Give me an adjective: ");
+        String noun2 = getNonEmptyString(scan, "Give me a noun: ");
+                
+        // Build the story with inputs
+        return "The Space Academy sent me on a mission to explore Planet " + planetName1
+               + ". \nWhen I landed, the ground felt " + adjective1 + ", and the first \n"
+               + "thing I saw was a giant " + noun1 + " staring right at me. I had \n"
+               + "to " + verb1 + " quickly before a group of alien " + pluralNoun1 
+               + " surrounded \nmy ship. The air smelled " + adjective2 + ", and my \n"
+               + "scanner detected " + number1 + " strange life-forms nearby. As I \n"
+               + "crept forward, " + verb2 + " as quietly as possible, I noticed a \n"
+               + adjective3 + " glow coming from a hidden cave. Inside, I discovered \n"
+               + "a floating " + noun2 + " that pulsed with energy. Finally, proof that Planet\n"
+               + planetName1 + " held secrets no one back home would believe.\n";
+    }
+  
+    
+    //Validation---------------------------------------------------------------- 
+        //Word Verification
+        public static String getNonEmptyString(Scanner scan, String prompt) {
+            String value = "";
+            while (value.trim().isEmpty()) {
+                System.out.print(prompt);
+                value = scan.nextLine();
+            }
+            return value;
+        }
+        
+        //Number Verification
+        public static int getValidInteger(Scanner scan, String prompt) {
+            System.out.print(prompt);
+
+            while (!scan.hasNextInt()) {
+                System.out.print("Please enter a valid number: ");
+                scan.next(); // clear invalid input
+            }
+
+            int number = scan.nextInt();
+            scan.nextLine(); // clear leftover newline
+            return number;
     }
 }
-
-
-//------------------------------------------------------------------------------
-//Story1 class begins-----------------------------------------------------------
-//------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------
-//Story2 class begins-----------------------------------------------------------
-//------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------
-//Story3 class begins-----------------------------------------------------------
-//------------------------------------------------------------------------------
