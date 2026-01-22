@@ -4,14 +4,23 @@
 
 package com.mycompany.methoddesign;
 
+//------------------------------------------------------------------------------
+//Imports:
+import java.util.Scanner;
+import java.util.ArrayList;
+//------------------------------------------------------------------------------
+
+
+
 /**
  *
  * @author NWilber2026
- */
+ *
+ **/
+
 
 //------------------------------------------------------------------------------
 //Instructions:
-//------------------------------------------------------------------------------
     /*
     -Each student object should have 3 courses
     -Each course will have a test
@@ -22,26 +31,36 @@ package com.mycompany.methoddesign;
     -Alter toString to provide the student details
     -Modify the driver Class to allow adding students and getting their scores
     -Provide a planning doc to show your logic in how you design the classes/relationships
-    -Provide a simple UML Class Diagram to show the relationships, and where the public/private methods are
+    -Provide a simple UML Class Diagram to show the relationships, and where the 
+     public/private methods are
     */
-
 //------------------------------------------------------------------------------
+
+
+
 //Copy in (and edit) the skeleton code
-//------------------------------------------------------------------------------
 
-    //public class
-    public class StudentMain
-    {
+
+
+//--------------------------------------------------------------------------
+//public class
+//--------------------------------------------------------------------------
+public class StudentMain
+{
         public static void main(String args[])
         {
         Student st1 = new Student("Nathan", "Wilber");
         //doesn't do anything right now.
         }
-    }
+}
     
-    //basic class Student - should have 3 courses
-    class Student
-    {
+
+
+//--------------------------------------------------------------------------
+//Student Class Starts
+//--------------------------------------------------------------------------
+class Student    
+{
         private String firstName, lastName;
         Course c1 = new Course();
         int s = c1.setScore(85);
@@ -68,11 +87,15 @@ package com.mycompany.methoddesign;
         result = firstName + " " + lastName + "\n";
         return result;
         }
-    }
+}
 
-    //basic class Course
-    class Course
-    {
+
+
+//--------------------------------------------------------------------------
+//Course Class Starts
+//--------------------------------------------------------------------------
+class Course
+{
         public int score = 0;
         public int setScore(int inScore){
         score = inScore;
@@ -81,5 +104,5 @@ package com.mycompany.methoddesign;
         public int getScore(){
         return score;
         }
-    }
+}
 
