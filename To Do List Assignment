@@ -1,1 +1,179 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.todolist;
+
+//------------------------------------------------------------------------------
+//Imports:
+import java.util.ArrayList;
+import java.util.Collections;
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//Directions:
+/* In this project you will set up a to-do list of tasks with different complexities
+and priorities, and compare these.
+
+Set up an interface called Priority, with methods setPriority and getPriority. 
+This intrrface should allow defining a way to establish numeric priority between 
+different object instances.
+
+Design a Class called Task and implement it (instantiate objects) in the main 
+method, that instantiates one or more of these to-do tasks. Task should implement
+Priority.
+
+Have Task also implement the Complexity interface shown earlier (in MiniQuiz). 
+Also have task implement the Comparable Interface (it is in the standard Class 
+library, no need to import anything). 
+
+The driver class (containing the main method) should rank the tasks in order 
+of priority, then complexity. */
+//------------------------------------------------------------------------------
+
+
+
+/**
+ *
+ * @author NWilber2026
+ */
+
+
+
+//------------------------------------------------------------------------------
+//Driver Class Starts
+//------------------------------------------------------------------------------
+public class ToDoList 
+{
+    
+    //Set up array list to hold all the tasks
+    public static void main(String[] args) 
+    {
+        //Print header of list
+        System.out.println("-Here is your To-Do-List-");
+        //Print first conditional
+        System.out.println("\nUnsorted Tasks:");
+
+        //Use Array List to store tasks
+        ArrayList<Task> tasks = new ArrayList<>();
+        
+        //Format all the tasks for Array List
+        tasks.add(new Task("   Study for Math Test", 3, 6));
+        tasks.add(new Task("   Shower after running", 1, 1));
+        tasks.add(new Task("   Study for Physics Test", 3, 8));
+        tasks.add(new Task("   Comp Sci Assignment", 2, 5));
+        
+            //Pring the base ToDoList (pre-ranking)
+            for (Task t : tasks) 
+            {
+            System.out.println(t);
+            }
+
+        //Rank the tasks off of priority first, complexity second
+        Collections.sort(tasks);
+            
+        //Print sorted list
+            //Header
+            System.out.println("\nTasks Sorted by priority, then complexity:");
+            //List
+            for (Task t : tasks) 
+            {
+            System.out.println(t);
+            }
+    }
+}
+
+
+//------------------------------------------------------------------------------
+//Interface Starts
+//------------------------------------------------------------------------------
+
+//Priority
+interface Priority
+{
+    //Set & Get Methods
+    public void setPriority(int priority);
+    public int getPriority();
+}
+
+//Complextiy
+interface Complexity
+{
+    //Set & Get Methods
+    public void setComplexity(int complexity);
+    public int getComplexity();
+}
+
+
+//------------------------------------------------------------------------------
+//Task Class Starts
+//------------------------------------------------------------------------------
+class Task implements Priority, Complexity, Comparable <Task>
+{
+    //Declare private
+        //Name
+        private final String name;
+        //Higher int priority = lower priority
+        private int priority;
+        //Higher int complexity = harder task
+        private int complexity;
+    
+    //Constructor
+    public Task(String name, int priority, int complexity)
+    {
+        this.name = name;
+        this.priority = priority;
+        this.complexity = complexity;                
+    }
+    
+    //Interface Methods      
+        //Priority interface
+        @Override
+        public void setPriority(int p) 
+            {
+            priority = p;
+            }
+
+        @Override
+        public int getPriority() 
+            {
+            return priority;
+            }
+
+        //Complexity interface
+        @Override
+        public void setComplexity(int c) 
+            {
+            complexity = c;
+            }
+
+        @Override
+        public int getComplexity() 
+            {
+            return complexity;
+            }
+        
+    //Comparable Interface
+        @Override
+        public int compareTo(Task other) 
+        {      
+        //Priority First
+            if (this.priority != other.priority) 
+            {
+            return this.priority - other.priority;
+            }
+            
+        //Complexity Second (If priority is equal)
+            return this.complexity - other.complexity;
+        }
+      
+    //Formatted String
+        @Override
+        public String toString() 
+        {
+        return name + "\n   Priority: " + priority + ", Complexity: " + complexity;
+        }   
+}  
 
