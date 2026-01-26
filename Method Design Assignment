@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.methoddesign;
+package com.mycompany.studentmain1;
 
 //------------------------------------------------------------------------------
 //Imports:
-import java.util.Scanner;
-import java.util.ArrayList;
+//none
 //------------------------------------------------------------------------------
 
 
@@ -42,67 +41,133 @@ import java.util.ArrayList;
 
 
 
-//--------------------------------------------------------------------------
-//public class
-//--------------------------------------------------------------------------
-public class StudentMain
+//------------------------------------------------------------------------------
+//Main Class Starts
+//------------------------------------------------------------------------------
+public class StudentMain1
 {
         public static void main(String args[])
         {
-        Student st1 = new Student("Nathan", "Wilber");
-        //doesn't do anything right now.
+        //Student 1
+            //Create Student 1
+            Student st1 = new Student("Nathan", "Wilber");        
+            //Create Test Scores
+            st1.setTestScore(1, 95);
+            st1.setTestScore(2, 76);
+            st1.setTestScore(3, 88);
+        
+        //Student 2
+            //Create Student 2
+            Student st2 = new Student("Teddy", "Lang");        
+            //Create Test Scores
+            st2.setTestScore(1, 67);
+            st2.setTestScore(2, 98);
+            st2.setTestScore(3, 85);
+        
+        //Display Info
+        System.out.println(st1);
+        System.out.println("  Average of scores: " + st1.getAverage() );
+        System.out.println(st2);
+        System.out.println("  Average of scores: " + st2.getAverage() );
         }
 }
     
 
 
-//--------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //Student Class Starts
-//--------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class Student    
 {
-        private String firstName, lastName;
+    //Student Name format    
+    private String firstName, lastName;
+        //3 course objects    
         Course c1 = new Course();
-        int s = c1.setScore(85);
-    
-    //empty constructor to create empty Student object
+        Course c2 = new Course();
+        Course c3 = new Course();
+        
+    //Constructor (default)
     public Student()
         {
         firstName = "";
         lastName = "";
+        c1 = new Course();
+        c2 = new Course();
+        c3 = new Course();
         }
 
-    //basic constructor to create Student object with name only
+    //Constructor (name only)
     public Student(String first, String last)
         {
         firstName = first;
         lastName = last;
+        c1 = new Course();
+        c2 = new Course();
+        c3 = new Course();
         }
 
-    //needs a constructor to include 3 course objects
-    //basic toString code
+    //Constructor (specific course setter)       
+    public void setTestScore(int cNum, int score)
+        {
+        if (cNum == 1)
+        c1.setTestScore(score);
+        else if (cNum == 2)
+        c2.setTestScore(score);
+        else if (cNum == 3)
+        c3.setTestScore(score);
+        }
+
+    //Constructor (average score)
+    public double getAverage()
+        {
+        return (c1.getTestScore() + c2.getTestScore() + c3.getTestScore() ) /3.0;
+        }
+    
+    //Formatted Info
+    @Override
     public String toString()
         {
-        String result;
-        result = firstName + " " + lastName + "\n";
+        String result = "";
+        result += "\nStudent Name: " + firstName + " " + lastName + "\n";
+        result += "  Course 1 Score: " + c1.getTestScore() + "\n";
+        result += "  Course 2 Score: " + c2.getTestScore() + "\n";
+        result += "  Course 3 Score: " + c3.getTestScore();
+        
         return result;
-        }
+        }   
 }
 
 
 
-//--------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //Course Class Starts
-//--------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class Course
-{
-        public int score = 0;
-        public int setScore(int inScore){
-        score = inScore;
-        return score;
+{           
+    //Variable for class
+    private int testScore;
+       
+    //Constructor (score initially at 0)
+    public Course()
+        {
+        testScore = 0;
         }
-        public int getScore(){
-        return score;
+        
+    //Constructor (overloaded)
+    public Course(int score)
+        {
+        testScore = score;
+        }
+        
+    //Setter for test score
+    public void setTestScore(int score)
+        {                
+        testScore = score;
+        }
+        
+    //Getter for test score
+        public int getTestScore()
+        {
+        return testScore;
         }
 }
-
