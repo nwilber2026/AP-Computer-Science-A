@@ -1,0 +1,107 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.radiuscalc;
+
+/**
+ *
+ * @author NWilber2026
+ */
+
+
+//------------------------------------------------------------------------------
+//Start of pasted code----------------------------------------------------------
+//------------------------------------------------------------------------------
+
+import java.util.Scanner;
+
+public class RadiusCalc 
+{
+
+    /**
+     * @param args the command line arguments
+     */
+    //carry out calculations or circular items
+    //such as a circle, a sphere, a cone, a column
+    
+//Changed scanner name to "scan"
+//Moved Scanner outside of void main & made static
+        static Scanner scan = new Scanner(System.in);
+    
+    public static void main(String[] args) 
+    {
+                       
+        //
+        System.out.println("This program calculates round item numbers such as \n" +
+                "1 - Area of a circle (pi r^2)\n" +
+                "2 - Volume of a sphere (4/3 pi r^3)\n" +
+                "3 - Volume of a cone (pi r^2 h/3)\n" +
+                "4 - Volume of a column (pi r^2 h)");
+        System.out.println("Type the number for which one you want to calculate:");
+
+//Spaced out this section to make it easier for me to read
+//renamed the calc methods to align with the number prompt to make it line up better
+        int i = scan.nextInt();
+        if (i == 1)
+            {
+            calc1();
+            }
+        else if (i == 2)
+            {
+            calc2();
+            }
+        else if(i == 3)
+            {
+            calc3();
+            }
+        else if(i == 4)
+            {
+            calc4();
+            }
+    }
+    
+    public static void calc4() //volume of a column
+    {
+//Defined the variables for radius and height in the question asked
+//Corrected "cone" in prompt to "column" for proper formula
+        System.out.println("enter the radius (r) of your column, then height (h) of your column");
+        int r = scan.nextInt();
+//Define variable "h", and scan for it
+        int h = scan.nextInt();
+        double result = Math.PI * Math.pow(r, 2) * h;
+        System.out.println(result);
+    }   
+    
+    public static void calc3() //volume of a cone
+    {
+//Defined the variables for radius and height in the question asked        
+        System.out.println("enter the radius (r) of your cone, then height (h) of your cone");
+        int r = scan.nextInt();
+        int h = scan.nextInt();
+//add "/ 3.0" to end because it is the proper formula for cone volume
+        double result = Math.PI * Math.pow(r, 2) * (h / 3.0);
+//changed "r" to "result so that it prints the proper thing, instead of the inputted radius "r"
+        System.out.println(result);
+    }
+    
+    public static void calc1() //area of a circle
+    {
+        System.out.println("enter the radius (r) of your circle");
+        int r = scan.nextInt();
+        double result = Math.PI * Math.pow(r, 2);
+        System.out.println(result);
+    }
+    
+    public static void calc2() //volume of a sphere
+    {
+//Defined the variables for radius and height in the question asked        
+        System.out.println("enter the radius (r) of your sphere");
+        int r = scan.nextInt();
+//change "4/3" to "4.0/3.0" because it is a double        
+        double result = (4.0/3.0) * Math.PI * Math.pow(r, 3);
+//changed "r" to "result so that it prints the proper thing, instead of the inputted radius "r"
+        System.out.println(result);
+    }
+
+}
