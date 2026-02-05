@@ -12,27 +12,32 @@ import java.util.Random;
  * @author NWilber2026
  */
 
-
-
+//------------------------------------------------------------------------------
+//CardDealer Class Starts
+//------------------------------------------------------------------------------
 public class CardDealer {
-    public static void main(String[] args) {
-        // 1. Initialize the 2D array: 4 suits (rows) and 13 ranks (columns)
-        String[][] deckOfCards = new String[4][13];
-        String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
-        String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+    
+    public static void main(String[] args) 
+    {
+        //2D array (4 suits, 13 ranks)
+            String[][] deckOfCards = new String[4][13];
+            String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
+            String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
-        // 2. Fill the deck with card names (e.g., "Ace of Spades")
-        for (int row = 0; row < deckOfCards.length; row++) {
-            for (int col = 0; col < deckOfCards[row].length; col++) {
-                deckOfCards[row][col] = ranks[col] + " of " + suits[row];
+        //Fill the deck with card names (e.g., "Ace of Spades")
+            for (int row = 0; row < deckOfCards.length; row++) 
+            {
+                for (int col = 0; col < deckOfCards[row].length; col++) 
+                {
+                    deckOfCards[row][col] = ranks[col] + " of " + suits[row];
+                }
             }
-        }
 
-        // 3. Shuffle the deck 
-        // We swap each card with another random position in the 2D array
+        //Shuffle the deck        
         Random rand = new Random();
         for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 13; col++) {
+            for (int col = 0; col < 13; col++) 
+            {
                 int randomRow = rand.nextInt(4);
                 int randomCol = rand.nextInt(13);
                 
@@ -43,12 +48,14 @@ public class CardDealer {
             }
         }
 
-        // 4. Deal 4 hands of 5 cards
-        // Since the deck is shuffled, we can just take the first 20 cards sequentially
+        //Deal 4 hands of 5 cards
+        //Since the deck is shuffled, we can just take the first 20 cards sequentially
         int cardsDealt = 0;
-        for (int hand = 1; hand <= 4; hand++) {
+        for (int hand = 1; hand <= 4; hand++) 
+        {
             System.out.println("Hand " + hand + ":");
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) 
+            {
                 // Calculate current row and column based on total cards dealt
                 int row = cardsDealt / 13;
                 int col = cardsDealt % 13;
