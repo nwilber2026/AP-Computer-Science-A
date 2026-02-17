@@ -1,0 +1,291 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.vehicleinheritance;
+
+/**
+@author NWilber2026
+**/
+
+
+//------------------------------------------------------------------------------
+/* Directions: 
+I want you to use the code I have supplied for Vehicle and Car, 
+and expand on this. Look up vehicle specs on the web.
+
+I want each person to create 2 Class files that inherit from Car, as well as 2 
+Boat Classes, 2 Airplane classes, and 2 other vehicle Classes (impress me!). I 
+basicallty want to get you used to using inheritance.
+
+You can override the toString to print out speial characteristics, use the 
+Speedometer methods as needed (should all speeds be in mph?). I may give extra 
+credit if I am impressed by someone's imaginitive coding. Please make sure to 
+comment everything well.
+*/
+//------------------------------------------------------------------------------
+
+//Do a pirate ship and the the space shuttle and delorian back to the future
+
+
+//Start of code
+
+//------------------------------------------------------------------------------
+//Spedometer Interface Starts
+// -- Base Interface --
+//------------------------------------------------------------------------------
+interface Speedometer
+    {
+        public void setSpeed(double inSpeed);
+        public double getSpeed();
+    }
+
+
+
+//------------------------------------------------------------------------------
+//Vehicle Class Starts
+// -- Base Class --
+//------------------------------------------------------------------------------
+public class Vehicle implements Speedometer
+{
+    //Vehicle variables
+        protected String brandName = "";
+        protected double speed = 0.0;
+        protected int passengers = 0;
+        protected double cargoWeight = 0.0;
+        
+    //Default Constructor for vehicle
+        public Vehicle()
+        {
+            brandName = "";
+            speed = 0.0;
+            passengers = 0;
+            cargoWeight = 0.0;
+        }
+
+        public Vehicle(String inBrand, double inSpeed, int inPassengers, double inCargo)
+        {
+            brandName = inBrand;
+            speed = inSpeed;
+            passengers = inPassengers;
+            cargoWeight = inCargo;
+        }
+
+    //Getters & Setters --------------------------------------------------------    
+    
+    //Brand - get & set
+        public Vehicle(String inBrand)
+        {
+            brandName = inBrand;
+        }
+
+        public String getBrand()
+        {
+            return brandName;
+        }
+
+        public void setBrandName(String inBrand)
+        {
+            brandName = inBrand;
+        }
+
+    //Speed - get & set
+        public double getSpeed()
+        {
+            return speed;
+        }
+
+        public void setSpeed(double inSpeed)
+        {
+            speed = inSpeed;
+        }
+
+    //Passengers - get & set
+        public int getPassengers()
+        {
+            return passengers;
+        }
+
+        public void setPassengers(int inPassengers)
+        {
+            speed = inPassengers;
+        }
+    
+    //Cargo Weight - get & set
+        public double getCargoWeight()
+        {
+            return cargoWeight;
+        }
+
+        public void setCargoWeight(double inCargoWeight)
+        {
+            cargoWeight = inCargoWeight;
+        }
+    //--------------------------------------------------------------------------
+    
+    //Base toString (print all)
+        public String toString()
+        {
+            String result = "";
+            result = "Brand: \t\t\t" + getBrand() + "\n" +
+            "Speed (mph): \t" + getSpeed() + "\n" +
+            "Passengers: \t" + getPassengers() + "\n" +
+            "Cargo (lbs): \t" + getCargoWeight() + "\n";
+                return result;
+        }
+}
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+//Car Class Starts
+// --Extension of Vehicle--
+//------------------------------------------------------------------------------
+    public class Car extends Vehicle
+    {
+        int wheels = 4;
+        String color = "White";
+        boolean spoiler = false;
+        boolean stereo = false;
+        double mpg = 0.0; //has an extra variable, mpg
+        public Car(String inBrand, double inSpeed, int inPassengers, double inCargo,
+        double inMPG)
+        {
+            constructor
+        }
+    }
+     
+    //Getters & Setters --------------------------------------------------------
+    
+    //Spoiler - get & set
+        public boolean getSpoiler()
+        {
+            return spoiler;
+        }
+    
+    //Stereo - get & set
+        public void setStereo(boolean inStereo)
+        {
+            stereo = inStereo;
+        }
+        
+        public boolean getStereo()
+        {
+            return stereo;
+        }
+        //----------------------------------------------------------------------
+
+    //overrides the super getSpeed method
+        @Override
+            public double getSpeed() 
+            {
+                if (spoiler)
+                else
+            }
+
+            public void setMpg(double mpg) 
+            {
+                this.mpg = mpg;
+            }
+
+            public double getMPG()
+            {
+            if(stereo)
+            else
+            }
+
+//usesd the super toString, as well as addingnthe new variable to it.
+    public String toString()
+    {
+        String result = super.toString() +
+        "MPG :\t\t\t" + this.getMPG();
+        return result ;
+    }
+
+    return mpg - (mpg / 10);
+    return mpg;
+    return super.getSpeed() + 20;
+    return super.getSpeed();
+    super(inBrand, inSpeed, inPassengers, inCargo); //uses the super
+    mpg = inMPG; //also include the extra variable in the Car constructor
+    //another additional variable
+    public void setSpoiler(boolean inSpoiler){
+    spoiler = inSpoiler;    
+
+
+//------------------------------------------------------------------------------
+//Boat Class Starts
+// -- Extension of Vehicle --
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//Airplane Class Starts
+// -- Extension of Vehicle --
+//------------------------------------------------------------------------------
+
+
+//==============================================================================
+//
+// 2 Classes Inheriting from Car
+//
+//==============================================================================
+
+//------------------------------------------------------------------------------
+//Batmobile Class Starts
+// -- Extension of Car --
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//Time Traveling Delorean Class Starts
+// -- Extension of Car --
+//------------------------------------------------------------------------------
+
+
+
+
+
+//==============================================================================
+//
+// 2 Boat Classes Inheriting from Boat
+//
+//==============================================================================
+
+//------------------------------------------------------------------------------
+//Pirate Ship Class Starts
+// -- Extension of Boat --
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//__________ Class Starts
+// -- Extension of Boat --
+//------------------------------------------------------------------------------
+
+
+
+
+
+//==============================================================================
+//
+// 2 Airplane ClassesInheriting from Airplane
+//
+//==============================================================================
+
+//------------------------------------------------------------------------------
+//Spruce Goose Class Starts
+// -- Extension of Airplane --
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+//Class Starts
+// -- Extension of Airplane --
+//------------------------------------------------------------------------------
