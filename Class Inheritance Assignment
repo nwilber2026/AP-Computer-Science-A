@@ -25,20 +25,40 @@ comment everything well.
 */
 //------------------------------------------------------------------------------
 
-//Do a pirate ship and the the space shuttle and delorian back to the future
 
 
-//Start of code
+//Start of code...
 
 //------------------------------------------------------------------------------
-//Spedometer Interface Starts
-// -- Base Interface --
+//Vehicle Iheritance Class Starts
 //------------------------------------------------------------------------------
-interface Speedometer
-    {
-        public void setSpeed(double inSpeed);
-        public double getSpeed();
+public class VehicleInheritance 
+{
+    public static void main(String[] args) 
+    {   
+        Vehicle[] vehicles = 
+        {
+            //Cars
+                new Batmobile(),
+                new Delorean(),
+            //Boats    
+                new pirateShip(),
+                new Battleship(),
+            //Airplanes
+                new spruceGoose(), 
+                new spaceShuttle(),
+            //Other
+                new Chariot(),
+                new Motorcycle(),
+        };
+               
+          for (Vehicle v : vehicles) 
+          {
+              System.out.println(v);
+              System.out.println("--------------------------------------------------------\n");
+          }     
     }
+}
 
 
 
@@ -46,7 +66,7 @@ interface Speedometer
 //Vehicle Class Starts
 // -- Base Class --
 //------------------------------------------------------------------------------
-public class Vehicle implements Speedometer
+class Vehicle implements Speedometer
 {
     //Vehicle variables
         protected String brandName = "";
@@ -73,71 +93,56 @@ public class Vehicle implements Speedometer
 
     //Getters & Setters --------------------------------------------------------    
     
-    //Brand - get & set
+        //Brand - get & set
         public Vehicle(String inBrand)
-        {
-            brandName = inBrand;
-        }
-
+            {brandName = inBrand;}
         public String getBrand()
-        {
-            return brandName;
-        }
+            {return brandName;}
+        public void setBrandName(String inBrand)       
+            {brandName = inBrand;}        
 
-        public void setBrandName(String inBrand)
-        {
-            brandName = inBrand;
-        }
-
-    //Speed - get & set
+        //Speed - get & set
         public double getSpeed()
-        {
-            return speed;
-        }
-
+            {return speed;}       
         public void setSpeed(double inSpeed)
-        {
-            speed = inSpeed;
-        }
+            {speed = inSpeed;}
 
-    //Passengers - get & set
+        //Passengers - get & set
         public int getPassengers()
-        {
-            return passengers;
-        }
-
+            {return passengers;}
         public void setPassengers(int inPassengers)
-        {
-            speed = inPassengers;
-        }
+            {speed = inPassengers;}
     
-    //Cargo Weight - get & set
+        //Cargo Weight - get & set
         public double getCargoWeight()
-        {
-            return cargoWeight;
-        }
-
+            {return cargoWeight;}
         public void setCargoWeight(double inCargoWeight)
-        {
-            cargoWeight = inCargoWeight;
-        }
+            {cargoWeight = inCargoWeight;}
     //--------------------------------------------------------------------------
     
     //Base toString (print all)
         public String toString()
         {
             String result = "";
-            result = "Brand: \t\t\t" + getBrand() + "\n" +
-            "Speed (mph): \t" + getSpeed() + "\n" +
-            "Passengers: \t" + getPassengers() + "\n" +
-            "Cargo (lbs): \t" + getCargoWeight() + "\n";
-                return result;
+            result = "\n\nBrand: " + getBrand() + "\n" +
+            "Speed (mph): " + getSpeed() + "\n" +
+            "Passengers: " + getPassengers() + "\n" +
+            "Cargo (lbs): " + getCargoWeight() + "\n";
+            return result;
         }
 }
 
 
 
-
+//------------------------------------------------------------------------------
+//Spedometer Interface Starts
+// -- Base Interface --
+//------------------------------------------------------------------------------
+interface Speedometer
+{
+    public void setSpeed(double inSpeed);
+    public double getSpeed();
+}
 
 
 
@@ -145,46 +150,43 @@ public class Vehicle implements Speedometer
 //Car Class Starts
 // --Extension of Vehicle--
 //------------------------------------------------------------------------------
-    public class Car extends Vehicle
-    {
+class Car extends Vehicle
+{
+    //Car Variables
         int wheels = 4;
         String color = "White";
         boolean spoiler = false;
         boolean stereo = false;
         double mpg = 0.0; //has an extra variable, mpg
+        
+    //Default Car Constructor
         public Car(String inBrand, double inSpeed, int inPassengers, double inCargo,
         double inMPG)
         {
-            constructor
+            super(inBrand, inSpeed, inPassengers, inCargo); //uses "super" version
+            mpg = inMPG; //extra variable
         }
-    }
-     
-    //Getters & Setters --------------------------------------------------------
     
-    //Spoiler - get & set
+        //Spoiler - extra variable
+        public void setSpoiler(boolean inSpoiler)       
+            {spoiler =  inSpoiler;}
         public boolean getSpoiler()
-        {
-            return spoiler;
-        }
-    
-    //Stereo - get & set
-        public void setStereo(boolean inStereo)
-        {
-            stereo = inStereo;
-        }
+            {return spoiler;}         
         
+        //Stereo - extra variable
+        public void setStereo(boolean inStereo)        
+            {stereo = inStereo;}                
         public boolean getStereo()
-        {
-            return stereo;
-        }
-        //----------------------------------------------------------------------
+            {return stereo;}
 
-    //overrides the super getSpeed method
+    //Overrides the super getSpeed method
         @Override
             public double getSpeed() 
             {
                 if (spoiler)
+                    return super.getSpeed() + 20;
                 else
+                    return super.getSpeed();
             }
 
             public void setMpg(double mpg) 
@@ -195,28 +197,22 @@ public class Vehicle implements Speedometer
             public double getMPG()
             {
             if(stereo)
+                return mpg - (mpg / 10);
             else
+                return mpg;
             }
 
-//usesd the super toString, as well as addingnthe new variable to it.
-    public String toString()
-    {
-        String result = super.toString() +
-        "MPG :\t\t\t" + this.getMPG();
-        return result ;
-    }
+    //used the super toString, as well as adding the new variable to it.
+        public String toString()
+        {
+            String result = super.toString() +
+            "MPG: " + this.getMPG();
+            return result;
+        }
+}
 
-    return mpg - (mpg / 10);
-    return mpg;
-    return super.getSpeed() + 20;
-    return super.getSpeed();
-    super(inBrand, inSpeed, inPassengers, inCargo); //uses the super
-    mpg = inMPG; //also include the extra variable in the Car constructor
-    //another additional variable
-    public void setSpoiler(boolean inSpoiler){
-    spoiler = inSpoiler;    
-
-
+//Set up extensions of vehicles to get boats and planes
+        
 //------------------------------------------------------------------------------
 //Boat Class Starts
 // -- Extension of Vehicle --
@@ -240,6 +236,26 @@ public class Vehicle implements Speedometer
 //Batmobile Class Starts
 // -- Extension of Car --
 //------------------------------------------------------------------------------
+class Batmobile extends Car
+{
+    //New unique variable
+    private int jetEngine = 2;
+            
+    public Batmobile() 
+    {
+        super("Bruce Wayne Industries", 250, 2, 4400, 16);
+        //Spoiler and Stereo toggle
+        setSpoiler(true);
+        setStereo(true);
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\n\n\t\t-- Batmobile --" + super.toString() + "\nJet Engines: " + jetEngine;
+        }        
+}
 
 
 
@@ -247,6 +263,26 @@ public class Vehicle implements Speedometer
 //Time Traveling Delorean Class Starts
 // -- Extension of Car --
 //------------------------------------------------------------------------------
+class Delorean extends Car
+{
+    //New unique variable
+    private int timeTravelSpeed = 88;
+            
+    public Delorean() 
+    {
+        super("DeLorean Motor Company", 100, 2, 400, 22);
+        //Spoiler and Stereo toggle
+        setSpoiler(false);
+        setStereo(true);
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\t-- Back to the Future Delorean --" + super.toString() + "\nSpeed to begin time travel (mph): " + timeTravelSpeed;
+        }        
+}
 
 
 
@@ -262,13 +298,21 @@ public class Vehicle implements Speedometer
 //Pirate Ship Class Starts
 // -- Extension of Boat --
 //------------------------------------------------------------------------------
+class pirateShip extends Vehicle
+{
+    
+}
 
 
 
 //------------------------------------------------------------------------------
-//__________ Class Starts
+//Battleship Class Starts
 // -- Extension of Boat --
 //------------------------------------------------------------------------------
+class Battleship extends Vehicle
+{
+    
+}
 
 
 
@@ -276,7 +320,7 @@ public class Vehicle implements Speedometer
 
 //==============================================================================
 //
-// 2 Airplane ClassesInheriting from Airplane
+// 2 Airplane Classes Inheriting from Airplane
 //
 //==============================================================================
 
@@ -284,8 +328,48 @@ public class Vehicle implements Speedometer
 //Spruce Goose Class Starts
 // -- Extension of Airplane --
 //------------------------------------------------------------------------------
+class spruceGoose extends Vehicle
+{
+    
+}
+
+
 
 //------------------------------------------------------------------------------
-//Class Starts
+//Space Shuttle Class Starts
 // -- Extension of Airplane --
 //------------------------------------------------------------------------------
+class spaceShuttle extends Vehicle
+{
+    
+}
+
+
+
+
+
+//==============================================================================
+//
+// 2 New* Other Classes Inheriting from Vehicle
+//
+//==============================================================================
+
+//------------------------------------------------------------------------------
+//Spruce Goose Class Starts
+// -- Extension of Airplane --
+//------------------------------------------------------------------------------
+class Chariot extends Vehicle
+{
+    
+}
+
+
+
+//------------------------------------------------------------------------------
+//Space Shuttle Class Starts
+// -- Extension of Airplane --
+//------------------------------------------------------------------------------
+class Motorcycle extends Vehicle
+{
+    
+}
