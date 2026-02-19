@@ -152,28 +152,25 @@ interface Speedometer
 //------------------------------------------------------------------------------
 class Car extends Vehicle
 {
-    //Car Variables
-        int wheels = 4;
-        String color = "White";
+    //Car Variables       
         boolean spoiler = false;
         boolean stereo = false;
         double mpg = 0.0; //has an extra variable, mpg
         
     //Default Car Constructor
-        public Car(String inBrand, double inSpeed, int inPassengers, double inCargo,
-        double inMPG)
+        public Car(String inBrand, double inSpeed, int inPassengers, double inCargo, double inMPG)
         {
             super(inBrand, inSpeed, inPassengers, inCargo); //uses "super" version
             mpg = inMPG; //extra variable
         }
     
-        //Spoiler - extra variable
+        //Spoiler - extra variable toggle
         public void setSpoiler(boolean inSpoiler)       
             {spoiler =  inSpoiler;}
         public boolean getSpoiler()
             {return spoiler;}         
         
-        //Stereo - extra variable
+        //Stereo - extra variable toggle
         public void setStereo(boolean inStereo)        
             {stereo = inStereo;}                
         public boolean getStereo()
@@ -211,12 +208,50 @@ class Car extends Vehicle
         }
 }
 
+
+
 //Set up extensions of vehicles to get boats and planes
         
 //------------------------------------------------------------------------------
 //Boat Class Starts
 // -- Extension of Vehicle --
 //------------------------------------------------------------------------------
+class Boat extends Vehicle
+{
+    //Boat variables
+    String captainName = "";    
+    boolean Anchor = true;
+    boolean Sails = true;
+
+    //Default Boat Constructor
+    public Boat(String inBrand, double inSpeed, int inPassengers, double inCargo, String inCaptain) 
+    {
+        super(inBrand, inSpeed, inPassengers, inCargo); //uses "super" version
+        captainName = inCaptain;       
+    }
+
+        //Anchor - extra variable toggle
+        public void setAnchor(boolean inAnchor)       
+            {Anchor =  inAnchor;}
+        public boolean getAnchor()
+            {return Anchor;}
+        
+        //Sails - extra variable toggle
+        public void setSails(boolean inSails)       
+            {Anchor =  inSails;}
+        public boolean getSails()
+            {return Sails;}
+    
+    //Print update
+    @Override
+    public String toString() 
+    {
+        return super.toString() + 
+            "Captain's Name: " + captainName + "\n" +   //add captain name to print
+            "Has Anchor?: " + Anchor + "\n" +           //add anchor to print
+            "Has Sails?: " + Sails ;                    //add sails to print            
+    }
+}
 
 
 
@@ -224,6 +259,30 @@ class Car extends Vehicle
 //Airplane Class Starts
 // -- Extension of Vehicle --
 //------------------------------------------------------------------------------
+class Airplane extends Vehicle
+{
+    //Airplane variables
+    int altitude = 0;
+    int Wingspan = 0;
+
+    //Default Airplane Constructor
+    public Airplane(String inBrand, double inSpeed, int inPassengers, double inCargo, int inAltitude, int inWingspan) 
+    {
+        super(inBrand, inSpeed, inPassengers, inCargo); // Calls Vehicle constructor
+        altitude = inAltitude;
+        Wingspan = inWingspan;
+    }
+
+    //Print update
+    @Override
+    public String toString() 
+    {
+        return super.toString() + 
+            "Max Altitude (ft): " + altitude + "\n" +   //add altitude to print
+            "Wingspan (ft): " + Wingspan;               //add wingspan to print
+    }
+}
+
 
 
 //==============================================================================
@@ -270,7 +329,7 @@ class Delorean extends Car
             
     public Delorean() 
     {
-        super("DeLorean Motor Company", 100, 2, 400, 22);
+        super("DeLorean Motor Company", 110, 2, 400, 22);
         //Spoiler and Stereo toggle
         setSpoiler(false);
         setStereo(true);
@@ -280,7 +339,7 @@ class Delorean extends Car
     @Override
         public String toString() 
         {
-            return "\t-- Back to the Future Delorean --" + super.toString() + "\nSpeed to begin time travel (mph): " + timeTravelSpeed;
+            return "\t-- Delorean (Back to the Future)--" + super.toString() + "\nSpeed to begin time travel (mph): " + timeTravelSpeed;
         }        
 }
 
@@ -298,9 +357,26 @@ class Delorean extends Car
 //Pirate Ship Class Starts
 // -- Extension of Boat --
 //------------------------------------------------------------------------------
-class pirateShip extends Vehicle
+class pirateShip extends Boat
 {
-    
+    //New unique variable
+    private int cannons = 12;
+            
+    public pirateShip() 
+    {
+        super("Blackbeard's Crew", 8.5, 55, 300000, "Blackbeard");
+        //Anchor and Sails toggle
+        setAnchor(true);
+        setSails(true);
+        
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\t-- Queen Anne's Revenge (Pirate Ship) --" + super.toString() + "\nNumber of Cannons: " + cannons;
+        }        
 }
 
 
@@ -309,9 +385,26 @@ class pirateShip extends Vehicle
 //Battleship Class Starts
 // -- Extension of Boat --
 //------------------------------------------------------------------------------
-class Battleship extends Vehicle
+class Battleship extends Boat
 {
-    
+    //New unique variable
+    private int numMissles = 90;
+            
+    public Battleship() 
+    {
+        super("U.S. Navy", 8.5, 150, 84300000, "Captain Franklin Van Valkenburgh");
+        //Anchor and Sails toggle
+        setAnchor(true);
+        setSails(false);
+        
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\t-- USS Arizona (Battleship) --" + super.toString() + "\nNumber of Missles: " + numMissles;
+        }        
 }
 
 
@@ -328,9 +421,22 @@ class Battleship extends Vehicle
 //Spruce Goose Class Starts
 // -- Extension of Airplane --
 //------------------------------------------------------------------------------
-class spruceGoose extends Vehicle
+class spruceGoose extends Airplane
 {
-    
+    //New unique variable
+    private String Material = "birch wood";
+            
+    public spruceGoose() 
+    {
+        super("Hughes Aircraft Company", 235, 750, 150000, 85, 320);               
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\t\t-- Spruce Goose --" + super.toString() + "\nMaterial: " + Material;
+        }     
 }
 
 
@@ -339,9 +445,23 @@ class spruceGoose extends Vehicle
 //Space Shuttle Class Starts
 // -- Extension of Airplane --
 //------------------------------------------------------------------------------
-class spaceShuttle extends Vehicle
+class spaceShuttle extends Airplane
 {
-    
+    //New unique variable
+    private boolean Airlock = true;
+    private boolean Space = true;
+            
+    public spaceShuttle() 
+    {
+        super("Nasa", 17500, 10, 65000, 20400000, 78);               
+    }
+
+    //Print all
+    @Override
+        public String toString() 
+        {
+            return "\t\t-- Space Shuttle --" + super.toString() + "\nAirlock?: " + Airlock + "\nSpace Capable?: " + Space;
+        }   
 }
 
 
@@ -355,21 +475,50 @@ class spaceShuttle extends Vehicle
 //==============================================================================
 
 //------------------------------------------------------------------------------
-//Spruce Goose Class Starts
-// -- Extension of Airplane --
+//Chariot Class Starts
+// -- Extension of Vehicle --
 //------------------------------------------------------------------------------
 class Chariot extends Vehicle
 {
-    
+    //Chariot variables
+    private int Horses = 2; 
+
+    //Defult Chariot Constructor
+    public Chariot() 
+    {
+        super("Ancient Rome", 20, 1, 250);
+    }
+
+    //Print all
+    @Override
+    public String toString() 
+    {
+        return "\t\t-- Roman Chariot --" + super.toString() + "Horses: " + Horses;
+    }
 }
 
 
 
 //------------------------------------------------------------------------------
-//Space Shuttle Class Starts
-// -- Extension of Airplane --
+//Motorcycle Class Starts
+// -- Extension of Vehicle --
 //------------------------------------------------------------------------------
 class Motorcycle extends Vehicle
 {
-    
+    //Morotcycle variables
+    private boolean sidecar = false;
+    private int wheelsNum = 2;
+
+    //Defult Morotcycle Constructor
+    public Motorcycle() 
+    {
+        super("Harley Davidson", 120, 2, 415);
+    }
+
+    //Print all
+    @Override
+    public String toString() 
+    {
+        return "\t\t-- Morotcycle --" + super.toString() + "Has Sidecar: " + sidecar + "\nNumber of Wheels: " + wheelsNum;
+    }
 }
