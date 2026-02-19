@@ -153,6 +153,8 @@ interface Speedometer
 class Car extends Vehicle
 {
     //Car Variables       
+        int wheels = 4;
+        String color = "White";
         boolean spoiler = false;
         boolean stereo = false;
         double mpg = 0.0; //has an extra variable, mpg
