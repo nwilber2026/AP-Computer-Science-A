@@ -1,1 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package furtherprocessanttextfileassignment;
 
+//------------------------------------------------------------------------------
+//Imports:
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.*;
+
+
+/*
+* @author NWilber2026
+*/
+
+
+//ReadWriteAntFiles Class-------------------------------------------------------
+public class ReadWriteAntFiles 
+{
+    public static void main(String[] args) 
+    {              
+        //Set up Scanner
+        Scanner scan = new Scanner(System.in);        
+        //Set up Array List
+        ArrayList<Contact> contacts = new ArrayList<>();
+        
+        //Path
+        //String filePath = "TextFiles/Contacts.txt";
+                
+        
+        //Try reading process
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) 
+        {
+        
+            
+            
+        } 
+        
+        // Read from file
+        try (BufferedReader reader = new BufferedReader(new
+        FileReader(outPath))) 
+        {
+            String line;
+            System.out.println("\nReading from the file:");
+            while ((line = reader.readLine()) != null) 
+            { System.out.println(line); }
+        } 
+         
+    }
+}
+
+//Contact Class-----------------------------------------------------------------
+class Contact 
+{
+    String name, email, username;
+    int gradYear;
+
+    public Contact(String name, String email, int gradYear, String username) {
+        this.name = name;
+        this.email = email;
+        this.gradYear = gradYear;
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return name + " | " + email + " | " + gradYear + " | " + username;
+    }
+}
