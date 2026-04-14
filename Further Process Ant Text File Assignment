@@ -6,12 +6,7 @@ package furtherprocessanttextfileassignment;
 
 //------------------------------------------------------------------------------
 //Imports:
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
 import java.util.*;
 
 
@@ -30,29 +25,96 @@ public class ReadWriteAntFiles
         //Set up Array List
         ArrayList<Contact> contacts = new ArrayList<>();
         
-        //Path
-        //String filePath = "TextFiles/Contacts.txt";
+        //Path to be saved and read from
+        String filePath = "TextFiles/Contacts.txt";
                 
-        
-        //Try reading process
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) 
-        {
-        
-            
-            
-        } 
-        
+                      
         // Read from file
-        try (BufferedReader reader = new BufferedReader(new
-        FileReader(outPath))) 
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) 
         {
-            String line;
-            System.out.println("\nReading from the file:");
+            String line;            
             while ((line = reader.readLine()) != null) 
-            { System.out.println(line); }
-        } 
-         
-    }
+            { 
+                String[] parts = line.split(",");
+
+                if (parts.length == 4) 
+                {
+                    String name = parts[0].trim();
+                    String email = parts[1].trim();
+                    int gradYear = Integer.parseInt(parts[2].trim());
+                    String username = parts[3].trim();
+                    contacts.add(new Contact(name, email, gradYear, username));
+                }
+            } 
+        }
+        catch (IOException e) 
+            { System.out.println("No existing file found."); }
+    
+    //Ask user
+    while(true) 
+    { 
+            System.out.println("\n---Contacts Manager---");
+            System.out.println("Add contact = a");
+            System.out.println("Order by email = e");
+            System.out.println("Order by grad year = y");
+            System.out.println("Order by name = n");
+            char choice = scan.nextLine().toLowerCase().charAt(0);    
+            
+            //"A" process
+            if (choice == 'a')
+            {
+                System.out.println("\nEnter name: ");
+                String name = scan.nextLine();
+
+                System.out.println("\nEnter email: ");
+                String email = scan.nextLine();
+
+                System.out.println("\nEnter graduation year");
+                int gradYear = scan.nextInt(); 
+                scan.nextLine();
+
+                System.out.println("\nEnter username");
+                String username = scan.nextLine();
+
+                Contact newContact = new Contact(name, email, gradYear, username);
+                contacts.add(newContact);
+            
+                // Write to file
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) 
+                {
+                    writer.write(newContact.toString());
+                    writer.newLine();
+                    System.out.println("Contact saved.");
+                } 
+                catch (IOException e) 
+                { System.err.println("An error occurred" + e.getMessage()); }
+            }
+    
+        //"E" process    
+        else if (choice == 'e')
+            {
+            contacts.sort(Comparator.comparing(c -> c.email));
+            }
+        
+        //"Y" process
+        else if (choice == 'y')
+            {
+            contacts.sort(Comparator.comparingInt(c -> c.gradYear));
+            }      
+        
+        //"N" process
+        else if (choice == 'n')
+            {
+            contacts.sort(Comparator.comparing(c -> c.name));
+            }
+
+        System.out.println("\nContacts: ");
+        for (Contact c : contacts)
+            {
+            System.out.println(c);
+            }
+    }    
+    }    
 }
 
 //Contact Class-----------------------------------------------------------------
@@ -61,7 +123,8 @@ class Contact
     String name, email, username;
     int gradYear;
 
-    public Contact(String name, String email, int gradYear, String username) {
+    public Contact(String name, String email, int gradYear, String username) 
+    {
         this.name = name;
         this.email = email;
         this.gradYear = gradYear;
@@ -69,7 +132,6 @@ class Contact
     }
 
     @Override
-    public String toString() {
-        return name + " | " + email + " | " + gradYear + " | " + username;
-    }
+        public String toString() 
+        { return name + " , " + email + " , " + gradYear + " , " + username; }
 }
